@@ -1,14 +1,22 @@
 # Biodiverse Quick Start Guide Quarto Book
 
-## Render the book locally
-1. Install Quarto using these instructions
+This is the source code to generate the Biodiverse Quick Start Book. 
+It is created using Quarto, a cross language publishing software.
+
+View the book at this URL: https://biogeospatial.github.io/biodiverse-quick-start/
+
+## To render the book locally using RStudio
+1. Install the [Quarto](https://quarto.org/docs/download/) software
 2. Clone this repository to your local computer
 3. Open the .Rproj file using RStudio
 4. Click on any .qmd files and click on Render.
 
-Alternatively,
+## To render using terminal
 
-1. Click on there 'Terminal' pane and type quarto render and hit enter
-2. Once the book has been rendered and the terminal is free, type quarto preview and hit enter
+1. Open your terminal shell (click on the 'Terminal' if using RStudio)
+2. Navigate to the cloned repository
+3. Type `quarto render` and hit enter
+4. Once the book has been rendered and the terminal is free, 
+   type `quarto preview` and hit enter
 
-This should open the book in your View Pane or default browser
+Both methods should open the book in your View Pane or default browser
