@@ -87,9 +87,13 @@ Biodiverse now imports the data from the Example_site_data.csv input file and cr
 
 #### Remap
 
-The option to remap label names will appear after the re-order option.
+The option to remap (change) label names will appear after the re-order option.
+The remap process can generate possible matches between spatial data and any tree, matrices, group properties and label properties automatically. Remapping is helpful when the user is working across multiple data sets and wishes to standardise components such as element names or spatial units. For example, where a set of labels needs to be altered in a tree to match the BaseData object labels (vice versa).
 
-The remap process can generate possible matches between spatial data and any tree, matrices, group properties and label properties automatically. While this section is focused on importing BaseData, any object can have its element names remapped during or after import, with the latter accessed through the Basedata, Tree and Matrix menus as appropriate. The centralised interface for automatic remaps can be accessed under the file menu, as below. There are panes listing exact matches, non-matches (i.e. differences were too great), punctuation matches and possible typos. Users can choose to ignore any of these sets, and also select subsets within the sets if, for example, there are false matches. See the [blog for further remap information and examples](https://biodiverse-analysis-software.blogspot.com/4/matching-spatial-tree-matrix-and.html).
+Whilst the user is prompted to remap when importing data, remapping can be performed during or after import. To remap after import, locate “remap label” under the BaseData, Tree and Matrix menus. 
+
+The centralised interface for automatic remaps can be accessed under the file menu, as below. There are panes listing exact matches, non-matches (i.e. differences were too great), punctuation matches and possible typos. Users can choose to ignore any of these sets, and also select subsets within the sets if, for example, there are false matches. See the [blog for further remap information and examples](https://biodiverse-analysis-software.blogspot.com/2017/04/matching-spatial-tree-matrix-and.html).
+
 
 Since we are just importing example base data we will not remap so choose “no”.
 
