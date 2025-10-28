@@ -112,32 +112,6 @@ found *only* in the cell being hovered over. The branches in black are found i
 
 **new screenshot**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-![](images/image5.5.png)
-
-There are three sub-panes within the display pane. On the left is the group grid, on the upper right is the tree representing the clustering, and on the lower right is the scree plot for the tree.
-
-As with the visualisation of basedata/matrix/tree objects described earlier, the system is linked, and interactions in the group grid or tree of the cluster display are generally reflected in the other. Hovering the mouse over a node in the tree highlights the groups (in the group grid) that are contained in that node. Likewise, hovering the mouse over a group in the group grid will highlight the path (set of nodes/clusters) in the tree to which that group belongs. 
-
-Left click on a tree node to colour a set of subclusters (descendant nodes in the tree). These clusters are split into a number of coloured groupings based on the “*Clusters to colour*” parameter at the bottom of the pane. Note that some leaf nodes in the tree may have a length of zero (indicated by vertical bars at the leftmost side of the tree, longer vertical bars indicating more zero-length leaf nodes). Thus, if any such nodes occur under (to the left of) the node you have selected, their colouring will not be apparent if you are using “*Plot by Length*” mode. These nodes, along with their colouring (if selected) can be made apparent by switching to “*Plot by Depth*” mode under the tree options button under the *Display* menu at the left.
-
-The blue sliding bar in the tree pane can be dragged across the tree to colour the nodes and groups at that level. The bar also displays the number of nodes it is crossing when the mouse is focused on it. The maximum number of contrasting colours the system will display is 13\. If the slider bar crosses more than 13 nodes, all nodes will be uniformly coloured red instead, and groups in the group grid will not be coloured.
-
-It is also possible to [assign your own colours to the clusters](https://biodiverse-analysis-software.blogspot.com/2016/09/new-selection-tool-in-cluster-analysis.html) and to generate a geotiff (raster) to [reproduce the coloured cells in other systems](https://biodiverse-analysis-software.blogspot.com/2018/08/cluster-analyses-export-coloured.html).   
-
 ##  Running a Spatial (Moving Window) Analysis
 
 ###  Introduction
