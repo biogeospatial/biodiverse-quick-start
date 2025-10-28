@@ -42,9 +42,26 @@ Typically labels represent species, but in reality they can be any named entity 
 
 ### Groups 
 
-Groups are cells into which the labels are aggregated (binned). These are usually square, but can represent any number of axes (x, y, z, time, population-ID, …) with differing cell sizes (resolutions) and numeric or text types. The groups are plotted in the interactive maps that Biodiverse produces as outputs of data visualisation and spatial analyses, as in the example below. Groups are also integral to the spatial components of the moving window, cluster and randomisation analyses. 
+Groups are cells into which the labels are aggregated (binned). These
+are usually square, but can represent any number of axes (x, y, z, time,
+population-ID, ...) with differing cell sizes (resolutions) and numeric
+or text types. The groups are plotted in the interactive maps that
+Biodiverse produces as outputs of data visualisation and spatial
+analyses, as in the example below. Groups are also integral to the
+spatial components of the moving window, cluster and randomisation
+analyses.
 
-Please note however, that group coordinates are in the same coordinate system (map projection) as the input data. If you have input data in multiple files, with differing coordinate systems, then you can use GIS or other geospatial tools such as the sf library in R to project them into a common system.
+Please note that group coordinates are mapped using the coordinate
+system (map projection) of the input data. If you have input data in
+multiple files, with differing coordinate systems, then you can use GIS
+or other geospatial tools, such as the sf library in R, to project them
+into a common system.
+
+It is important to emphasise that while screenshots provided throughout
+this guide show spatial analysis of the Australian mainland/east coast,
+Biodiverse is applicable across infinite scales and spatial domains. In
+our example data case, the software supports geographic coordinates;
+however, Biodiverse can use any coordinate system.
 
 
 ![](images/image1.1.png)
