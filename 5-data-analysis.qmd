@@ -41,16 +41,11 @@ The cluster analysis tab opens. It has three main sections where you can set opt
 
 ###  Setting cluster analysis parameters
 
-For this guide, accept the default name for cluster analyses (see the diagram above) and the default metric, 'SORENSON' (the set of indices available for clustering is shown in the "Grouping metric?" column in the  [Indices](https://github.com/shawnlaffan/biodiverse/wiki/Indices) list), which includes tables summarising all supported metrics and indices by Biodiverse. If the column is blank, the metric cannot be used. Also accept the default linkage, 'link_average', which calculates the dissimilarity of each new group with all others as the average of the groups merged to create it, weighted by the number of terminal nodes
-each contains. This means a merge between node A with 10 terminal nodes and node B with 1 terminal node will not be biased towards node B's labels. See the [Cluster
-parameters](https://github.com/shawnlaffan biodiverse/wiki/SampleSession#running-a-cluster-analysis)
-section of the Sample Session for details of other available linkage functions.
+For this guide, accept the default name for cluster analyses (see the diagram above) and the default metric, 'SORENSON' (the set of indices available for clustering is shown in the "Grouping metric?" column in the  [Indices](https://github.com/shawnlaffan/biodiverse/wiki/Indices) list), which includes tables summarising all supported metrics and indices by Biodiverse. If the column is blank, the metric cannot be used. Also accept the default linkage, 'link_average', which calculates the dissimilarity of each new group with all others as the average of the groups merged to create it, weighted by the number of terminal nodes each contains. This means a merge between node A with 10 terminal nodes and node B with 1 terminal node will not be biased towards node B's labels. See the [Cluster parameters](https://github.com/shawnlaffan biodiverse/wiki/SampleSession#running-a-cluster-analysis) section of the Sample Session for details of other available linkage functions.
 
-The **spatial conditions** can be used to control which Groups are considered candidates to be clustered together. The default condition in the '*Spatial conditions set 1*' text box provided by the system is '*sp_select_all()*'. This condition selects every group and is an appropriate condition to use for unconstrained clustering. If you wish to use a different spatial condition, for example, to first cluster
-within geographic regions, then refer to [Spatial Conditions](https://github.com shawnlaffan/biodiverse/wiki/SpatialConditions for further details. 
+The **spatial conditions** can be used to control which Groups are considered candidates to be clustered together. The default condition in the '*Spatial conditions set 1*' text box provided by the system is '*sp_select_all()*'. This condition selects every group and is an appropriate condition to use for unconstrained clustering. If you wish to use a different spatial condition, for example, to first cluster within geographic regions, then refer to [Spatial Conditions](https://github.com shawnlaffan/biodiverse/wiki/SpatialConditions for further details) 
 
-The **definition query** serves a similar purpose, except that it can be used as a filter to restrict the clustering to only a subset of groups. For example, you might have a data set for Europe but only want to cluster cells in regions above a specified elevation value. The [Spatial Analysis](https://biogeospatial.github.io/biodiverse-quick-start/5-data-analysis.html#5.3-running-a-spatial-(moving-window)-analysis) section in this document provides additional details about spatial conditions
-and definition queries.
+The **definition query** serves a similar purpose, except that it can be used as a filter to restrict the clustering to only a subset of groups. For example, you might have a data set for Europe but only want to cluster cells in regions above a specified elevation value. The [Spatial Analysis](https://biogeospatial.github.io/biodiverse-quick-start/5-data-analysis.html#5.3-running-a-spatial-(moving-window)-analysis) section in this document provides additional details about spatial conditions and definition queries.
 
 **Tie-breakers** deal with groups that have the same similarity score as the processing group. Tie-breakers create rules to determine which group should be merged first, using a user-selected index. If your project has a specific conservation focus, tie-breakers can bias clustering toward areas with higher richness, endemism, or other priorities.
 
@@ -67,8 +62,7 @@ Click on the ***Go\!*** button (keyboard shortcut *Control-G*). The system will 
 
 There are three sub-panes within the display pane. On the left is the group grid, on the upper right is the tree representing the clustering, and on the lower right is the scree plot for the tree.
 
-As with the visualisation of BaseData/Matrix Tree objects described earlier, the system is linked, and interactions in the group grid or
-tree of the cluster display are generally reflected in the other. Hovering the mouse over a node in the tree highlights the groups (in the group grid) that are contained in that node with a black dot. Likewise, hovering the mouse over a group in the group grid will highlight the path (set of nodes/clusters) in the tree to which that group belongs.
+As with the visualisation of BaseData/Matrix Tree objects described earlier, the system is linked, and interactions in the group grid or tree of the cluster display are generally reflected in the other. Hovering the mouse over a node in the tree highlights the groups (in the group grid) that are contained in that node with a black dot. Likewise, hovering the mouse over a group in the group grid will highlight the path (set of nodes/clusters) in the tree to which that group belongs.
 
 To view clustering analysis results for all BaseData, left-click the arrow at the right-most side of the tree pane. This selects the root branch, which may have a zero length.The number of clusters displayed can be adjusted using the "Colours to clusters" feature. Note there is a maximum of 13.
 
@@ -78,10 +72,7 @@ Alternatively, the blue sliding bar in the tree pane can be dragged across the t
 
 **new screenshot needed**
 
-Left-click on a tree node to colour a set
-of subclusters (descendant nodes in the tree).These clusters are split into coloured groupings based on the "*Clusters to colour*" parameter at the bottom of the pane. Note that some leaf nodes in the tree may have a length of zero (indicated by vertical bars at the leftmost side of the tree, longer vertical bars indicating more zero-length leaf nodes). Thus, if any such nodes occur under (to the left of) the node you have selected, their colouring will not be apparent if you are using "*Plot
-by Length*" mode. These nodes, along with their colouring (if selected), can be made apparent by switching to "*Plot by Depth*" mode under the
-tree options button under the *Display* menu at the left.
+Left-click on a tree node to colour a set of subclusters (descendant nodes in the tree).These clusters are split into coloured groupings based on the "*Clusters to colour*" parameter at the bottom of the pane. Note that some leaf nodes in the tree may have a length of zero (indicated by vertical bars at the leftmost side of the tree, longer vertical bars indicating more zero-length leaf nodes). Thus, if any such nodes occur under (to the left of) the node you have selected, their colouring will not be apparent if you are using "*Plot by Length*" mode. These nodes, along with their colouring (if selected), can be made apparent by switching to "*Plot by Depth*" mode under the tree options button under the *Display* menu at the left.
 
 **new screenshot needed**
 
@@ -95,20 +86,16 @@ To do this, select ***user-defined*** in the selection list on the bottom toolba
 
 The cluster analysis generates a [**dissimilarity matrix**](https://github.com/shawnlaffan/biodiverse/wiki/Indices#matrix), which can be selected and viewed in the Outputs tab. In the example case, the index used is Sorenson, but a matrix can be created for different indices.
 
-The results consist of a map and a tree pane. The map illustrates the degree of similarity or difference between each group and its cluster
-neighbours. By hovering over or right-clicking a group (index group), its dissimilarity value is displayed at the top of the map pane.
+The results consist of a map and a tree pane. The map illustrates the degree of similarity or difference between each group and its cluster neighbours. By hovering over or right-clicking a group (index group), its dissimilarity value is displayed at the top of the map pane.
 
-Right-clicking a group selects it as the "*index group*", and the cell will be filled in grey. When an index group is selected, the map
-colourings will change to display the dissimilarity of all groups relative to the selected group. The map colouring indicates the
-dissimilarity value from 0 (low dissimilarity -- sites are similar) (blue) to 1 (high dissimilarity -- sites are different) (red). Other groups can be hovered over whilst the index group remains selected.
+Right-clicking a group selects it as the "*index group*", and the cell will be filled in grey. When an index group is selected, the map colourings will change to display the dissimilarity of all groups relative to the selected group. The map colouring indicates the dissimilarity value from 0 (low dissimilarity -- sites are similar) (blue) to 1 (high dissimilarity -- sites are different) (red). Other groups can be hovered over whilst the index group remains selected.
 
 When an index group is selected, the label (node IDs) contained within the group are highlighted in the tree pane in black.
 
 
 **new screenshot**
 
-Note that hovering over different groups whilst the index group is selected will highlight additional branches. Blue branches are found *only* in the index cell; red branches are
-found *only* in the cell being hovered over. The branches in black are found in *both* neighbouring cells. Branches not found in the two cells are in grey (reduces visual impact without hiding it). See this [blog post](https://methodsblog.com/2016/01/22 biodiverse/) for further information about how Biodiverse visualises phylodiversity.
+Note that hovering over different groups whilst the index group is selected will highlight additional branches. Blue branches are found *only* in the index cell; red branches are found *only* in the cell being hovered over. The branches in black are found in *both* neighbouring cells. Branches not found in the two cells are in grey (reduces visual impact without hiding it). See this [blog post](https://methodsblog.com/2016/01/22 biodiverse/) for further information about how Biodiverse visualises phylodiversity.
 
 **new screenshot**
 
@@ -130,8 +117,7 @@ The Spatial tab has two main sections where you can set options. The upper secti
 
 The **Name** option is the name used in the system. You can accept the default, or enter a new name (you cannot have duplicate names within the same BaseData object). 
 
-The **Neighbour set 1** and **Neighbour set 2** text boxes allow you to define the neighbour sets used for the calculations (see [Spatial Conditions](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions for further details). The size and shape of the neighbourhoods define the set of groups considered in an analysis. It is up to you to decide what sort of neighbourhoods and how many to use for your analysis. The system provides considerable flexibility in this regard: both neighbour sets may be arbitrarily defined independently of each other, and you are not
-obliged to specify a second neighbourhood.
+The **Neighbour set 1** and **Neighbour set 2** text boxes allow you to define the neighbour sets used for the calculations (see [Spatial Conditions](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions for further details)). The size and shape of the neighbourhoods define the set of groups considered in an analysis. It is up to you to decide what sort of neighbourhoods and how many to use for your analysis. The system provides considerable flexibility in this regard: both neighbour sets may be arbitrarily defined independently of each other, and you are not obliged to specify a second neighbourhood.
 
 The default condition in the *Neighbour set* 1 text box is '*sp_self_only()*'. This restricts the neighbourhood to one cell/group (the processing group, which is the group being processed at an iteration). The default condition in the *Neighbour set 2* text box '*sp_circle (radius =\> 100000)*' defines a circular neighbourhood of 100000 units centred on the processing group. The units are whatever the original data used, and for the example data, this is a 100 km or one cell radius. Make sure to uncomment the *\#* for the function to be applied.
 
@@ -183,16 +169,13 @@ The result is a display like this:
 
 ![](images/image5.12.png) **new screenshot**
 
-Hovering over a group will highlight the groups used in the calculations, a solid circle for those in the first neighbourhood and a dash for
-those in the second neighbourhood. Right-click on a group to keep the highlighting at that group until the mouse is left-clicked on any group. You can control whether these are displayed or just display one set by using the ***Nbr highlighting*** option under the ***Map*** list in the left-hand toolbar.
+Hovering over a group will highlight the groups used in the calculations, a solid circle for those in the first neighbourhood and a dash for those in the second neighbourhood. Right-click on a group to keep the highlighting at that group until the mouse is left-clicked on any group. You can control whether these are displayed or just display one set by using the ***Nbr highlighting*** option under the ***Map*** list in the left-hand toolbar.
 
 **new screenshot needed**
 
 Holding the control key while clicking on a group, or clicking on a group with the middle mouse button, produces a pop-up list with all the results in it. It also includes lists of the elements (groups) in each neighbour set (Elements set1, set2 and all) and of the labels in these neighbour sets (Labels set1, set2 and all). The “All” list is the union of neighbour sets 1 and 2\. 
 
-The tree branches are coloured according to whether they are found only in the first neighbour set (blue), the second neighbour set (red), both (black) or neither (grey). The screenshot above displays this. Also see the [blog post](https://biodiverse-analysis-software.blogspot.com/2016/01/more-on-tree-visualisations-in.html). [Some
-indices can also be plotted on the
-tree](https://biodiverse-analysis-software.blogspot.com/2017/09/visualise-spatial-analysis-results-on.html).  
+The tree branches are coloured according to whether they are found only in the first neighbour set (blue), the second neighbour set (red), both (black) or neither (grey). The screenshot above displays this. Also see the [blog post](https://biodiverse-analysis-software.blogspot.com/2016/01/more-on-tree-visualisations-in.html). [Some indices can also be plotted on the tree](https://biodiverse-analysis-software.blogspot.com/2017/09/visualise-spatial-analysis-results-on.html).  
 
 ##  Running a Randomisation Analysis
 

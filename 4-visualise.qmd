@@ -82,16 +82,11 @@ Using an overlay may result in slower display processing (e.g. when highlighting
 
 ###  Tree 
 
-The tree is generally a representation of
-the phylogenetic similarities between labels, although it could be used for anything that uses such a structure. In this pane, you should see
-two sections (assuming a tree object is selected in the main toolbar at the top of the window). The upper section displays the relationship
-between labels as a dendrogram.
+The tree is generally a representation of the phylogenetic similarities between labels, although it could be used for anything that uses such a structure. In this pane, you should see two sections (assuming a tree object is selected in the main toolbar at the top of the window). The upper section displays the relationship between labels as a dendrogram.
 
 **new screenshot needed**
 
-The dendrogram can be plotted by node depth or
-length via the *Tree* button on the left under the zoom/pan panel. This menu also allows you to adjust the width of tree branches and to change
-highlighting settings.
+The dendrogram can be plotted by node depth or length via the *Tree* button on the left under the zoom/pan panel. This menu also allows you to adjust the width of tree branches and to change highlighting settings.
 
 **new screenshot needed**
 
