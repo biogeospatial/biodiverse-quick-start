@@ -164,15 +164,11 @@ Once the analysis is complete, the system asks you whether you want to display t
 
 At this point, it may be useful to use the *Overlays* function (explained in section [***4.2.1***](#4.2.1-map-overlays)) to analyse results in their geographic context. Note that currently, adding an overlay can slow processing time when wanting to pan, select or hover over groups and nodes.
 
-
-
-Nothe that Biodiverse is not yet aware of coordinate systems and only “sees” the coordinates as numbers.  This means that the vector data MUST be in the same coordinate system as your basedata.  If you have imported data as lat/long coordinates (a geographic coordinate system) then the vector data must also use geographic coordinates.  If your basedata are in an equal area coordinate system then your vector data must also be in that coordinate system.  
+**new screenshot needed**
 
 ![](images/image5.9.png)
 
 ![](images/image5.10.png)
-
-
 
 ###  Running analysis with local neighbours
 
@@ -181,23 +177,28 @@ In the above moving window spatial analysis, the output visualisations only prov
 
 However, altering the second neighbour entry to ”sp\_circle (radius \= \> 500000)” when setting the initial analysis parameters (noted above), can identify aggregated relationships of these cells with their “neighbours”.
 
-![](images/image5.11.png)
+![](images/image5.11.png) **new screenshot**
 
-The result is a display like this:
+The result is a display like this: 
 
-![](images/image5.12.png)
+![](images/image5.12.png) **new screenshot**
 
-Hovering over a group will highlight the groups used in the calculations – a solid circle for those in the first neighbourhood and a dash for those in the second neighbourhood. Right click on a group to keep the highlighting at that group until the mouse is left clicked on any group. You can control whether these are displayed, or just display one set, by using the Neighbours selection options. 
+Hovering over a group will highlight the groups used in the calculations, a solid circle for those in the first neighbourhood and a dash for
+those in the second neighbourhood. Right-click on a group to keep the highlighting at that group until the mouse is left-clicked on any group. You can control whether these are displayed or just display one set by using the ***Nbr highlighting*** option under the ***Map*** list in the left-hand toolbar.
+
+**new screenshot needed**
 
 Holding the control key while clicking on a group, or clicking on a group with the middle mouse button, produces a pop-up list with all the results in it. It also includes lists of the elements (groups) in each neighbour set (Elements set1, set2 and all) and of the labels in these neighbour sets (Labels set1, set2 and all). The “All” list is the union of neighbour sets 1 and 2\. 
 
-The tree branches are coloured according to whether they are found only in the first neighbour set (blue), the second neighbour set (red) , both (black) or neither (grey).  See also the [blog post](https://biodiverse-analysis-software.blogspot.com/2016/01/more-on-tree-visualisations-in.html).  [Some indices can also be plotted on the tree](https://biodiverse-analysis-software.blogspot.com/2017/09/visualise-spatial-analysis-results-on.html).  
+The tree branches are coloured according to whether they are found only in the first neighbour set (blue), the second neighbour set (red), both (black) or neither (grey). The screenshot above displays this. Also see the [blog post](https://biodiverse-analysis-software.blogspot.com/2016/01/more-on-tree-visualisations-in.html). [Some
+indices can also be plotted on the
+tree](https://biodiverse-analysis-software.blogspot.com/2017/09/visualise-spatial-analysis-results-on.html).  
 
 ##  Running a Randomisation Analysis
 
 ###  Introduction
 
-Randomisations in Biodiverse are used to assess the statistical significance of a set of analysis results given some randomisation scheme such as shuffling the species around the map (labels across groups in Biodiverse terms), subject to constraints such as each cell (group) must maintain the same number of species. Randomisations are key to interpreting where results differ from what would be expected, and are integral to protocols such as the Categorical Analysis of Paleo and Neo Endemism ([CANAPE](https://biodiverse-analysis-software.blogspot.com/2022/10/biodiverse-now-calculates-canape-for-you.html)). The output can provide rank-relative scores from which significance can be derived as well as [z-scores](https://biodiverse-analysis-software.blogspot.com/2020/11/randomisations-now-also-generate-z.html). 
+Randomisations in Biodiverse are used to assess the statistical significance of a set of analysis results given some randomisation scheme, such as shuffling the species around the map (labels across groups in Biodiverse terms), subject to constraints such as each cell (group) must maintain the same number of species. Randomisations are key to interpreting where results differ from what would be expected, and are integral to protocols such as the Categorical Analysis of Paleo and Neo Endemism ([CANAPE](https://biodiverse-analysis-software.blogspot.com/2022/10/biodiverse-now-calculates-canape-for-you.html)). The output can provide rank-relative scores from which significance can be derived,as well as [z-scores](https://biodiverse-analysis-software.blogspot.com/2020/11/randomisations-now-also-generate-z.html).
 
 The default randomisation algorithm in Biodiverse is called [rand\_structured](https://biodiverse-analysis-software.blogspot.com/2020/11/randomisations-how-randstructured.html). 
 
@@ -205,10 +206,10 @@ The rand\_structured algorithm is so called because it maintains the structure o
 
 The basic process of the randomisation is this.  For each iteration of the randomisation analysis, Biodiverse will:
 
-1. Create a new basedata object with a random allocation of labels to groups, according to the selected algorithm  
-2. For each analysis in the basedata:  
+1. Create a new BaseData object with a random allocation of labels to groups, according to the selected algorithm  
+2. For each analysis in the BaseData:  
    1. Regenerate a version using the randomised basedata  
-   2. Compare the values of the analyses from the original and randomised basedata and track if they are higher or lower, on a group by group basis  
+   2. Compare the values of the analyses from the original and randomised BaseData and track if they are higher or lower, on a group by group basis  
    3. Track basic statistics of the distribution to allow the calculation of the mean and standard deviation, and thus z-scores.
 
 Randomisations can be run by selecting the Analyses\>Randomisation menu option:
@@ -217,6 +218,7 @@ Randomisations can be run by selecting the Analyses\>Randomisation menu option:
 
 Cluster and Region Grower trees are not rebuilt by default, partly for speed, partly because it is not normally needed.  If you do want to do so then select the “build randomised tree outputs” checkbox.  Note that any calculations per node are compared against the randomly generated basedata, though.
 
+The ***PRNG seed*** option allows the user to run reproducible sequences of random values between randomisations. If you **set the same seed**, you will get **the same randomisation results** every time you run it (with the same settings). If you leave it blank or change it, the randomisation will produce a different result.
 
 ![](images/image5.14.png)
 
@@ -228,15 +230,15 @@ A description of what the list and index names mean is also in the [main help sy
 
 ![](images/image5.15.png)
 
-![](images/image5.16.png)
-
- 
+![](images/image5.16.png) **new screenshot needed**
 
 ###  Spatially Structured Randomisations
 
-In the standard implementation of a randomisation, labels are randomly allocated to any group across the entire data set.  This works well for many studies and is very effective, however, when one begins to scale analyses to larger extents, then the total pool of labels begins to span many different environments.  The randomisations could allocate a polar taxon to the tropics, and a desert taxon to a rainforest.  This does not make the randomisation invalid, but it is perhaps not as strict as it could be, and perhaps also not as realistic. 
+In the standard implementation of randomisation, labels are assigned randomly to any group across the entire dataset. This approach works well for many studies and is very effective. However, as analyses scale up to larger extents, the total pool of labels begins to span many different environments. The randomisations might assign a polar taxon to the tropics, and a desert taxon to a rainforest. While this does not make the randomisation invalid, it may be less strict and less realistic than it could be.
 
-This can be readily fixed in Biodiverse by specifying a spatial condition to define subsets. Or, if you only want to randomise a subset of your data while holding the rest as-observed, you can use a *definition* query.  You can specify spatial conditions using the same syntax as for the Spatial and Cluster analyses. The analytical decisions are yours but generally speaking it is better to use a condition that generates non-overlapping regions.  Each group is allocated to only one subset, so in such overlapping cases it is the first one that contains a group "wins" that group.
+This can be readily fixed in Biodiverse by specifying a spatial condition to define subsets. Or, if you only want to randomise a subset of your data while holding the rest as-observed, you can use a *definition* query.  You can specify spatial conditions using the same syntax as for the Spatial and Cluster analyses. The analytical decisions are yours but generally, it is better to use a condition that generates non-overlapping regions.  Each group is allocated to only one subset, so in such overlapping cases it is the first one that contains a group "wins" that group.
+
+Additionally, you can set some labels as constant, giving greater choice depending on the analysis aims. This may be useful for endemism studies, where you want analysis results to reflect real-life ecological restraints on distributions.
 
 To read more on spatially structured randomisations see [this](https://biodiverse-analysis-software.blogspot.com/search?q=structured+randomisation) blog post. 
 
