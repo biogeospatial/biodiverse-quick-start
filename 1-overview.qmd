@@ -12,7 +12,7 @@ You can run a range of spatial analyses, such as cluster, moving window and rand
 
 ##   What programming language is Biodiverse developed in? 
 
-Biodiverse is written in the [Perl programming language](https://www.perl.org/).  There are two parts: an analysis engine, which can be scripted using perl code, and a GUI which is developed using [Gtk2](https://www.gtk.org/) and which calls the analytical engine.
+Biodiverse is written in the [Perl programming language](https://www.perl.org/).  There are two parts: an analysis engine, which can be scripted using perl code, and a GUI which is developed using [Gtk3](https://www.gtk.org/) and which calls the analytical engine.
 
 ##  Which operating systems does Biodiverse support? 
 
