@@ -14,7 +14,7 @@ Note that the sizes of the panes can be changed by clicking and dragging the div
 
 We now describe how each pane works.
 
-###  Label lists 
+##  Label lists 
 
 Click on any row in the list to highlight a single label. Hold the shift key down to select a contiguous block, and the control key to select (or deselect) non-contiguous labels. The second list is only visible if the project has a selected matrix. The main use for the second list is to be able to select labels from each list to highlight specific cells – or columns of cells – in the matrix pane, if a matrix is currently selected. The first (top) label list represents matrix rows, while the second (bottom) label list represents matrix columns.
 
@@ -60,7 +60,7 @@ control when selecting elements across all panes. Selections cannot be made on t
 
 **new screenshots needed**
 
-#### Map Overlays
+### Map Overlays
 
 External feature (vector) data can be imported to plot overlays in the Group pane. This can provide more insight into group distribution,
 especially if they are geographically related. Overlays may include polylines or polygons, for example, national border maps or bioregions.
@@ -80,13 +80,13 @@ Using an overlay may result in slower display processing (e.g. when highlighting
 
 **new screenshots needed**
 
-###  Tree 
+##  Tree 
 
 The tree is generally a representation of the phylogenetic similarities between labels, although it could be used for anything that uses such a structure. In this pane, you should see two sections (assuming a tree object is selected in the main toolbar at the top of the window). The upper section displays the relationship between labels as a dendrogram.
 
 **new screenshot needed**
 
-The dendrogram can be plotted by node depth or length via the *Tree* button on the left under the zoom/pan panel. This menu also allows you to adjust the width of tree branches and to change highlighting settings.
+The dendrogram can be plotted by node length or depth via the *Tree* menu on the left under the zoom/pan panel (and also range weighted variants using the current BaseData). This menu also allows you to adjust the width of tree branches and to change highlighting settings.
 
 **new screenshot needed**
 
@@ -107,14 +107,14 @@ Note the blue vertical sliding bar on the right side of the tree pane. Left-clic
 
  **new screenshot needed**
 
-####  Scree plot 
+###  Scree plot 
 
 The scree plot is the pane below the tree. It may be hidden by default, but can be dragged up from the bottom of the tree pane if not visible. This plot displays a simple graph of the proportion of nodes present to the left of an imaginary vertical line cut through the tree above.
 
 ![](images/image4.7.png)  **new screenshot needed**
 
 
-###  Matrix grid
+##  Matrix grid
 
 Each matrix grid cell represents a pair of labels from the label lists, coloured according to the pair’s matrix value, with a colour scale for these values on the right of the matrix.
 Cells in the matrix grid are only coloured if both labels they represent are present in the BaseData label list. If one or both of its labels are not present in the BaseData, a cell remains white.
