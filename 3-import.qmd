@@ -32,7 +32,7 @@ For BaseData objects, either a new object can be created, or an existing object 
 
 ###  BaseData
 
-The default import file type for BaseData is delimited text (e.g. CSV files).
+The default import file type for BaseData is delimited text (e.g. CSV files) but you can also import from [shapefiles](https://biodiverse-analysis-software.blogspot.com/2018/12/import-polygon-and-polyline-data.html), [spreedsheets](https://biodiverse-analysis-software.blogspot.com/2015/06/import-your-species-data-from.html) and [geospatial rasters](https://biodiverse-analysis-software.blogspot.com/2022/05/importing-group-properties-directly.html).  
 
 These instructions describe the process where an input text file is in list format and contains one record per observation, with separate columns for one or more [labels](https://github.com/shawnlaffan/biodiverse/wiki/DataStructures#labels) (e.g. names such as genus and species) and [groups](https://github.com/shawnlaffan/biodiverse/wiki/DataStructures#groups) (e.g. x and y coordinates of a data point). However you can also import data from raster, [shapefile](https://biodiverse-analysis-software.blogspot.com/2/import-polygon-and-polyline-data.html) and [spreadsheet](https://biodiverse-analysis-software.blogspot.com/6/import-your-species-data-from.html) formats. All formats except raster can also represent a matrix of data such as for a sites by species matrix (see [Importing Data in Matrix Format](https://github.com/shawnlaffan/biodiverse/wiki/SampleSession#data-are-in-matrix-format)).
 
@@ -122,7 +122,7 @@ However, prior to doing anything else, it is a good idea to **Save** your newly 
 
 Matrix data can be imported at any time, although it can only be viewed with an existing (and selected) BaseData object. Currently only delimited text files can be imported (e.g. csv or txt files).
 
-Remember that these matrices are not site by species matrices. These are matrices of numeric values representing some relationship between pairs of labels or groups, for example numbers of base pairs shared between pairs of labels. Site by species data are imported using the basedata import process.
+These matrices are not site by species matrices. These are matrices of numeric values representing some relationship between pairs of labels or groups, for example numbers of base pairs shared between pairs of labels. Site by species data are imported using the basedata import process.
 
 Select the import button ![](images/image-import.png) on the Matrix toolbar to open the Import Matrix dialogue window, from where you can select the input data file. Select *Example_matrix.txt*, give the new Matrix a name if you like, and click ***OK***.
 
