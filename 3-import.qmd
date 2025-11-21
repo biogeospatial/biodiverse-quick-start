@@ -105,7 +105,7 @@ be performed during or after import. To remap after import, locate
 
 The centralised interface for automatic remaps can be accessed under the file menu, as below. There are panes listing exact matches, non-matches (i.e differences were too great), punctuation matches and possible
 typos. Users can choose to ignore any of these sets, and also select
-subsets within the sets if, for example, there are false matches. [See the blog for further remap information and examples](https://biodiverse-analysis-software.blogspot.com/2017/04/matching-spatial-tree-matrix-and.html).
+subsets within the sets if, for example, there are false matches. [See the blog for further remap information and examples](https://biodiverse-analysis-software.blogspot.com/2017/04/matching-spatial-tree-matrix-and.html).
 
 **image**
 
