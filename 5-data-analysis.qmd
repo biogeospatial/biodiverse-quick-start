@@ -128,7 +128,7 @@ These default conditions are appropriate for our sample data, but we will modify
 
 See [Spatial Conditions](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions) for more detail on defining the neighbourhood sets (e.g. for the range of functions that you can use to specify neighbourhoods).
 
-Note that the use of neighbourhoods varies according to the type of calculation selected for analysis (see [Selecting Indices](#5.3.3-selecting-indices-to-calculate) below). Some calculations aggregate the neighbourhoods into a single set (e.g. [endemism\_whole](http://code.google.com/p/biodiverse/wiki/Indices#Endemism_and_Rarity)), others compare the labels in the first neighbour set with those in the second (e.g. [Jaccard and other dissimilarity indices](http://code.google.com/p/biodiverse/wiki/Indices#Taxonomic_Dissimilarity_and_Comparison)), while others use the first set to define the list of labels to use but then consider distributions across both neighbour sets (e.g. [endemism\_central](http://code.google.com/p/biodiverse/wiki/Indices#Endemism_and_Rarity)). Some will not be run unless two neighbour sets are defined, primarily the turnover calculations.  
+Note that the use of neighbourhoods varies according to the type of calculation selected for analysis (see [Selecting Indices](#6.3.3-selecting-indices-to-calculate) below). Some calculations aggregate the neighbourhoods into a single set (e.g. [endemism\_whole](http://code.google.com/p/biodiverse/wiki/Indices#Endemism_and_Rarity)), others compare the labels in the first neighbour set with those in the second (e.g. [Jaccard and other dissimilarity indices](http://code.google.com/p/biodiverse/wiki/Indices#Taxonomic_Dissimilarity_and_Comparison)), while others use the first set to define the list of labels to use but then consider distributions across both neighbour sets (e.g. [endemism\_central](http://code.google.com/p/biodiverse/wiki/Indices#Endemism_and_Rarity)). Some will not be run unless two neighbour sets are defined, primarily the turnover calculations.  
 
 The **Definition query** text box allows the analysis to be applied to only a subset of groups, as described in the [setting cluster analysis parameters](#5.2.1-setting-cluster-analysis-parameters)section above (those which satisfy the criteria in the definition query, but note that all groups are still considered as possible neighbours).Leave this blank for this session. For details of setting a definition query, see [Definition
 Queries](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions#definition-queries).
@@ -143,21 +143,18 @@ Details about the full range of indices are available from the [Indices](https:/
 
 Click on the ***Go\!*** button. The system will then run the selected spatial analyses.
 
-![](images/image5.7.png) **new screenshot needed**
+![](images/image5.7.png) 
 
 ###  Viewing the Spatial Analysis Results
 
 Once the analysis is complete, the system asks you whether you want to display the results. Click *Yes* and you will be shown a map of the moving window analysis results. Pull the pane down to view the options you used, for example to change them and re-run the analysis.
 
-![](images/image5.8.png) **new screenshot needed**
+![](images/image5.8.png)
 
 At this point, it may be useful to use the *Overlays* function (explained in section [***4.2.1***](#4.2.1-map-overlays)) to analyse results in their geographic context. Note that currently, adding an overlay can slow processing time when wanting to pan, select or hover over groups and nodes.
 
-**new screenshot needed**
+![](images/image5.8_1.png)
 
-![](images/image5.9.png)
-
-![](images/image5.10.png)
 
 ###  Running analysis with local neighbours
 
@@ -166,15 +163,15 @@ In the above moving window spatial analysis, the output visualisations only prov
 
 However, altering the second neighbour entry to ”sp\_circle (radius \= \> 500000)” when setting the initial analysis parameters (noted above), can identify aggregated relationships of these cells with their “neighbours”.
 
-![](images/image5.11.png) **new screenshot**
+![](images/image5.11.png)
 
 The result is a display like this: 
 
-![](images/image5.12.png) **new screenshot**
+![](images/image5.12.png)
 
 Hovering over a group will highlight the groups used in the calculations, a solid circle for those in the first neighbourhood and a dash for those in the second neighbourhood. Right-click on a group to keep the highlighting at that group until the mouse is left-clicked on any group. You can control whether these are displayed or just display one set by using the ***Nbr highlighting*** option under the ***Map*** list in the left-hand toolbar.
 
-**new screenshot needed**
+![](images/image5.12_1.png)
 
 Holding the control key while clicking on a group, or clicking on a group with the middle mouse button, produces a pop-up list with all the results in it. It also includes lists of the elements (groups) in each neighbour set (Elements set1, set2 and all) and of the labels in these neighbour sets (Labels set1, set2 and all). The “All” list is the union of neighbour sets 1 and 2\. 
 
@@ -216,7 +213,7 @@ A description of what the list and index names mean is also in the [main help sy
 
 ![](images/image5.15.png)
 
-![](images/image5.16.png) **new screenshot needed**
+![](images/image5.16.png)
 
 ###  Spatially Structured Randomisations
 
