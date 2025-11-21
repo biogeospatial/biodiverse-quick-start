@@ -97,7 +97,7 @@ and wishes to standardise components such as element names or spatial
 units. For example, where a set of labels needs to be altered in a tree
 to match the BaseData object labels (vice versa).
 
-**image**
+![](images/image3.7a.png)
 
 Whilst the user is prompted to remap when importing data, remapping can
 be performed during or after import. To remap after import, locate
@@ -107,7 +107,7 @@ The centralised interface for automatic remaps can be accessed under the file me
 typos. Users can choose to ignore any of these sets, and also select
 subsets within the sets if, for example, there are false matches. [See the blog for further remap information and examples](https://biodiverse-analysis-software.blogspot.com/2017/04/matching-spatial-tree-matrix-and.html).
 
-**image**
+![](images/image3.7b.png)
 
 
 Since we are just importing example base data we will not remap so choose “no”.
