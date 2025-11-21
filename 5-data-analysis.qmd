@@ -11,7 +11,7 @@ Select *Build Spatial Index* from the *Analyses* menu option:
 
 ![](images/image5.0.png)
 
-For most purposes, accept the index sizes suggested by the system (see [[Using the Spatial Index](https://github.com/shawnlaffan biodiverse/wiki KeyConcepts#using-the-spatial-index)] for additional details on setting optimal index sizes). Note that index size refers to how finely Biodiverse divides spatial data into blocks for faster neighbour searching. Smaller blocks maximise precision but may involve more comparisons (longer processing time). Larger blocks may compromise precision for faster processing time.
+For most purposes, accept the index sizes suggested by the system (see [here](https://github.com/shawnlaffan/biodiverse/wiki/KeyConcepts#using-the-spatial-index)] for additional details on setting optimal index sizes). Note that index size refers to how finely Biodiverse divides spatial data into blocks for faster neighbour searching. Smaller blocks maximise precision but may involve more comparisons (longer processing time). Larger blocks may compromise precision for faster processing time.
 
 Click **OK** to build the spatial index. A pop-up dialog notifies you that the index has been built ***(OK).***
 
@@ -33,7 +33,7 @@ To run a cluster analysis on the currently selected BaseData object, select *Clu
 
 The cluster analysis tab opens. It has three main sections where you can set options:
 
-![](images/image5.4.png) * new screenshot needed*
+![](images/image5.4.png) 
 
 * The upper section (*Parameters*) determines the parameters used in the clustering to generate a tree.  This includes options to control the cluster tie-breaker algorithm.  
 * There are check-boxes in the middle section that can be toggled to alter how the cluster analysis runs, e.g. by controlling aspects like process performance (e.g. memory usage), the automatic export of results, etc.  
@@ -64,17 +64,19 @@ There are three sub-panes within the display pane. On the left is the group grid
 
 As with the visualisation of BaseData/Matrix Tree objects described earlier, the system is linked, and interactions in the group grid or tree of the cluster display are generally reflected in the other. Hovering the mouse over a node in the tree highlights the groups (in the group grid) that are contained in that node with a black dot. Likewise, hovering the mouse over a group in the group grid will highlight the path (set of nodes/clusters) in the tree to which that group belongs.
 
-To view clustering analysis results for all BaseData, left-click the arrow at the right-most side of the tree pane. This selects the root branch, which may have a zero length.The number of clusters displayed can be adjusted using the "Colours to clusters" feature. Note there is a maximum of 13.
+To view clustering analysis results for all BaseData, left-click the arrow at the right-most side of the tree pane. This selects the root branch, which may have a zero length. The number of clusters displayed can be adjusted using the "Colours to clusters" feature. Note there is a maximum of 13.
 
-**New screenshots needed**
+![](images/image5.4.2_1.png) 
+![](images/image5.4.2_2.png) 
+
 
 Alternatively, the blue sliding bar in the tree pane can be dragged across the tree to colour/cluster the nodes and groups at that level (e.g., a bar dragged over two nodes generates two clusters). The bar displays the number of nodes it is crossing when the mouse is focused on it. If the slider bar crosses more than 13 nodes, all nodes will be uniformly coloured red instead, and groups in the group grid will not be coloured.
 
-**new screenshot needed**
+![](images/image5.4.2_3.png) 
 
-Left-click on a tree node to colour a set of subclusters (descendant nodes in the tree).These clusters are split into coloured groupings based on the "*Clusters to colour*" parameter at the bottom of the pane. Note that some leaf nodes in the tree may have a length of zero (indicated by vertical bars at the leftmost side of the tree, longer vertical bars indicating more zero-length leaf nodes). Thus, if any such nodes occur under (to the left of) the node you have selected, their colouring will not be apparent if you are using "*Plot by Length*" mode. These nodes, along with their colouring (if selected), can be made apparent by switching to "*Plot by Depth*" mode under the tree options button under the *Display* menu at the left.
+Left-click on a tree node to colour a set of subclusters (descendant nodes in the tree). These clusters are split into coloured groupings based on the "*Clusters to colour*" parameter at the bottom of the pane. Note that some leaf nodes in the tree may have a length of zero (indicated by vertical bars at the leftmost side of the tree, longer vertical bars indicating more zero-length leaf nodes). Thus, if any such nodes occur under (to the left of) the node you have selected, their colouring will not be apparent if you are using "*Plot by Length*" mode. These nodes, along with their colouring (if selected), can be made apparent by switching to "*Plot by Depth*" mode under the tree options button under the *Display* menu at the left.
 
-**new screenshot needed**
+![](images/image5.4.2_4.png) 
 
 It is also possible to [assign your own colours to the clusters](https:/ biodiverse-analysis-software.blogspot.com/2016/09/new-selection-tool-in-cluster-analysis.html and to generate a geotiff (raster) to [reproduce the coloured cells in other systems](https://biodiverse-analysis-software.blogspot.com/2018/08/cluster-analyses-export-coloured.html).
 
@@ -82,7 +84,8 @@ This function is useful if you wish to visually align the Biodiverse cluster res
 
 To do this, select ***user-defined*** in the selection list on the bottom toolbar. Select the preferred colour and then fill the group grid by selecting your user-defined cluster node on the tree pane. Selecting the autoincrement button will allow the system to select the next colour for you; deselecting this will keep the cluster colour the same until it is changed manually by the user. The deselect button allows you to uncolour clusters by selecting them on the tree pane.
 
-**new screenshot**
+![](images/image5.4.2_5.png) 
+
 
 The cluster analysis generates a [**dissimilarity matrix**](https://github.com/shawnlaffan/biodiverse/wiki/Indices#matrix), which can be selected and viewed in the Outputs tab. In the example case, the index used is Sorenson, but a matrix can be created for different indices.
 
@@ -92,12 +95,12 @@ Right-clicking a group selects it as the "*index group*", and the cell will be f
 
 When an index group is selected, the label (node IDs) contained within the group are highlighted in the tree pane in black.
 
+![](images/image5.4.2_6.png) 
 
-**new screenshot**
 
 Note that hovering over different groups whilst the index group is selected will highlight additional branches. Blue branches are found *only* in the index cell; red branches are found *only* in the cell being hovered over. The branches in black are found in *both* neighbouring cells. Branches not found in the two cells are in grey (reduces visual impact without hiding it). See this [blog post](https://methodsblog.com/2016/01/22 biodiverse/) for further information about how Biodiverse visualises phylodiversity.
 
-**new screenshot**
+![](images/image5.4.2_7.png) 
 
 ##  Running a Spatial (Moving Window) Analysis
 
