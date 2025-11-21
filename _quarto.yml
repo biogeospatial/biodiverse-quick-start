@@ -6,7 +6,7 @@ project:
 
 book:
   title: "Biodiverse Quick Start Guide"
-  author: "Shawn W Laffan, Giovanni Di Virgilio, Hannah Beaton, Fonti Kar"
+  author: "Shawn W Laffan, Giovanni Di Virgilio, Hannah Beaton, Fonti Kar, Isla Eckstein"
   date: "9/19/2024"
   chapters:
     - index.qmd
