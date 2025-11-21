@@ -26,9 +26,9 @@ The ***Variety*** column shows the number of groups (grid cells) each label occu
 
 The ***Samples*** column lists the number of times a label occurs across all groups.
 
-The ***Redundancy*** column shows the sample redundancy for each label. This is calculated as (1 -- variety/samples). A value close to one represents a good overall sample of a label relative to the number of groups it occurs in (many redundant samples). A value of zero means that there is only one sample per group the label occurs in, and it is therefore not well sampled. The redundancy value can be understood as a measure of data sensitivity (lose one sample, will you lose one unit of range)
+The ***Redundancy*** column shows the sample redundancy for each label. This is calculated as (1 -- variety/samples). A value close to one represents a good overall sample of a label relative to the number of groups it occurs in (many redundant samples). A value of zero means that there is only one sample per group the label occurs in, and it is therefore not well sampled. The redundancy value can be understood as a measure of data sensitivity (lose one sample, will you lose one unit of range)
 
-The ***Selected*** / ***Col selected*** columns have a value of 1 when that label is selected, allowing the user to raise the selected set to the top of the list. The ***Col selected*** value is 1 only when one
+The ***Selected*** / ***Col selected*** columns have a value of 1 when that label is selected, allowing the user to raise the selected set to the top of the list. The ***Col selected*** value is 1 only when one
 selects a matrix column, either through the lower Label List or on the matrix itself.
 
 ###  Group grid 
@@ -102,7 +102,7 @@ Hovering over a tree node highlights the groups containing the node’s labels i
 
 Left-clicking on a branch selects all labels in terminal descendants (common ancestors/single-label nodes) of that node in the tree that are also in the label lists. Any nodes containing a label that is not present in the BaseData will remain black in the tree.
 
-![](images/image4.3_4.png.png) 
+![](images/image4.3_4.png) 
 
 Control-click on a node to display a pop-up window from which you can access lists of the labels, groups and branch characteristics (length, name, etc).
 
