@@ -32,7 +32,7 @@ For BaseData objects, either a new object can be created, or an existing object 
 
 ###  BaseData
 
-The default import file type for BaseData is delimited text (e.g. CSV files).
+The default import file type for BaseData is delimited text (e.g. CSV files) but you can also import from [shapefiles](https://biodiverse-analysis-software.blogspot.com/2018/12/import-polygon-and-polyline-data.html), [spreedsheets](https://biodiverse-analysis-software.blogspot.com/2015/06/import-your-species-data-from.html) and [geospatial rasters](https://biodiverse-analysis-software.blogspot.com/2022/05/importing-group-properties-directly.html).  
 
 These instructions describe the process where an input text file is in list format and contains one record per observation, with separate columns for one or more [labels](https://github.com/shawnlaffan/biodiverse/wiki/DataStructures#labels) (e.g. names such as genus and species) and [groups](https://github.com/shawnlaffan/biodiverse/wiki/DataStructures#groups) (e.g. x and y coordinates of a data point). However you can also import data from raster, [shapefile](https://biodiverse-analysis-software.blogspot.com/2/import-polygon-and-polyline-data.html) and [spreadsheet](https://biodiverse-analysis-software.blogspot.com/6/import-your-species-data-from.html) formats. All formats except raster can also represent a matrix of data such as for a sites by species matrix (see [Importing Data in Matrix Format](https://github.com/shawnlaffan/biodiverse/wiki/SampleSession#data-are-in-matrix-format)).
 
@@ -87,9 +87,28 @@ Biodiverse now imports the data from the Example_site_data.csv input file and cr
 
 #### Remap
 
-The option to remap label names will appear after the re-order option.
+The option to remap (change) label names will appear after the re-order
+option.
 
-The remap process can generate possible matches between spatial data and any tree, matrices, group properties and label properties automatically. While this section is focused on importing BaseData, any object can have its element names remapped during or after import, with the latter accessed through the Basedata, Tree and Matrix menus as appropriate. The centralised interface for automatic remaps can be accessed under the file menu, as below. There are panes listing exact matches, non-matches (i.e. differences were too great), punctuation matches and possible typos. Users can choose to ignore any of these sets, and also select subsets within the sets if, for example, there are false matches. See the [blog for further remap information and examples](https://biodiverse-analysis-software.blogspot.com/4/matching-spatial-tree-matrix-and.html).
+The remap process can generate possible matches between spatial data and
+any tree, matrices, group properties and label properties automatically.
+Remapping is helpful when the user is working across multiple data sets
+and wishes to standardise components such as element names or spatial
+units. For example, where a set of labels needs to be altered in a tree
+to match the BaseData object labels (vice versa).
+
+![](images/image3.7a.png)
+
+Whilst the user is prompted to remap when importing data, remapping can
+be performed during or after import. To remap after import, locate
+"remap label" under the BaseData, Tree and Matrix menus.
+
+The centralised interface for automatic remaps can be accessed under the file menu, as below. There are panes listing exact matches, non-matches (i.e differences were too great), punctuation matches and possible
+typos. Users can choose to ignore any of these sets, and also select
+subsets within the sets if, for example, there are false matches. [See the blog for further remap information and examples](https://biodiverse-analysis-software.blogspot.com/2017/04/matching-spatial-tree-matrix-and.html).
+
+![](images/image3.7b.png)
+
 
 Since we are just importing example base data we will not remap so choose “no”.
 
@@ -103,7 +122,7 @@ However, prior to doing anything else, it is a good idea to **Save** your newly 
 
 Matrix data can be imported at any time, although it can only be viewed with an existing (and selected) BaseData object. Currently only delimited text files can be imported (e.g. csv or txt files).
 
-Remember that these matrices are not site by species matrices. These are matrices of numeric values representing some relationship between pairs of labels or groups, for example numbers of base pairs shared between pairs of labels. Site by species data are imported using the basedata import process.
+These matrices are not site by species matrices. These are matrices of numeric values representing some relationship between pairs of labels or groups, for example numbers of base pairs shared between pairs of labels. Site by species data are imported using the basedata import process.
 
 Select the import button ![](images/image-import.png) on the Matrix toolbar to open the Import Matrix dialogue window, from where you can select the input data file. Select *Example_matrix.txt*, give the new Matrix a name if you like, and click ***OK***.
 

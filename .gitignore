@@ -13,3 +13,4 @@ ignore/
 *_files
 
 ~$*.pptx
+**/*.quarto_ipynb

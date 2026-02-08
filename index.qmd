@@ -1,12 +1,12 @@
 # **Quick Start Guide**   
-**Version 4.0**
+**Version 5.0**
 
 [**A tool for the spatial analysis of biological and related diversity**](http://shawnlaffan.github.io/biodiverse/)
 
-**Shawn W Laffan, Giovanni Di Virgilio & Hannah Beaton**  
-**Dec 2022**
+**Shawn W Laffan, Giovanni Di Virgilio, Hannah Beaton & Isla Eckstein**  
+**Nov 2025**
 
-This document is an update of the 2018 version.      
+This document is an update of the 2022 version.      
     
 There is also a blog that provides updates and tips about functionality.  It can be accessed through [http://biodiverse-analysis-software.blogspot.com.au/](http://biodiverse-analysis-software.blogspot.com.au/) 
 
