@@ -19,7 +19,7 @@ book:
     - 7-summary.qmd
     - 8-acknowledgements.qmd
   output-file: "Biodiverse-Quick-Start-Guide"
-  downloads: [pdf]
+  #downloads: [pdf]
 
 format:
   html:
@@ -31,11 +31,11 @@ format:
     number-sections: false
     #number-depth: 2
     link-external-newwindow: true
-  pdf:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    number-depth: 2
+  # pdf:
+    # toc: true
+    # toc-depth: 3
+    # number-sections: true
+    # number-depth: 2
 
 # bibliography: references.bib
 editor: source
