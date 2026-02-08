@@ -167,11 +167,6 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#building-a-spatial-index" id="toc-building-a-spatial-index" class="nav-link active" data-scroll-target="#building-a-spatial-index">Building a Spatial Index</a></li>
-  <li><a href="#running-a-cluster-analysis" id="toc-running-a-cluster-analysis" class="nav-link" data-scroll-target="#running-a-cluster-analysis">Running a Cluster Analysis</a>
-  <ul class="collapse">
-  <li><a href="#setting-cluster-analysis-parameters" id="toc-setting-cluster-analysis-parameters" class="nav-link" data-scroll-target="#setting-cluster-analysis-parameters">Setting cluster analysis parameters</a></li>
-  <li><a href="#viewing-the-cluster-results" id="toc-viewing-the-cluster-results" class="nav-link" data-scroll-target="#viewing-the-cluster-results">Viewing the cluster results</a></li>
-  </ul></li>
   <li><a href="#running-a-spatial-moving-window-analysis" id="toc-running-a-spatial-moving-window-analysis" class="nav-link" data-scroll-target="#running-a-spatial-moving-window-analysis">Running a Spatial (Moving Window) Analysis</a>
   <ul class="collapse">
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
@@ -179,6 +174,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#selecting-indices-to-calculate" id="toc-selecting-indices-to-calculate" class="nav-link" data-scroll-target="#selecting-indices-to-calculate">Selecting indices to calculate</a></li>
   <li><a href="#viewing-the-spatial-analysis-results" id="toc-viewing-the-spatial-analysis-results" class="nav-link" data-scroll-target="#viewing-the-spatial-analysis-results">Viewing the Spatial Analysis Results</a></li>
   <li><a href="#running-analysis-with-local-neighbours" id="toc-running-analysis-with-local-neighbours" class="nav-link" data-scroll-target="#running-analysis-with-local-neighbours">Running analysis with local neighbours</a></li>
+  </ul></li>
+  <li><a href="#running-a-cluster-analysis" id="toc-running-a-cluster-analysis" class="nav-link" data-scroll-target="#running-a-cluster-analysis">Running a Cluster Analysis</a>
+  <ul class="collapse">
+  <li><a href="#setting-cluster-analysis-parameters" id="toc-setting-cluster-analysis-parameters" class="nav-link" data-scroll-target="#setting-cluster-analysis-parameters">Setting cluster analysis parameters</a></li>
+  <li><a href="#viewing-the-cluster-results" id="toc-viewing-the-cluster-results" class="nav-link" data-scroll-target="#viewing-the-cluster-results">Viewing the cluster results</a></li>
   </ul></li>
   <li><a href="#running-a-randomisation-analysis" id="toc-running-a-randomisation-analysis" class="nav-link" data-scroll-target="#running-a-randomisation-analysis">Running a Randomisation Analysis</a>
   <ul class="collapse">
@@ -210,14 +210,64 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>There are three main analyses in Biodiverse, moving window (spatial) analyses, cluster analyses and randomisations. These are described here, following a description of the spatial index which you would normally want to use to speed up any spatial conditions used in the analyses.</p>
+<p>A fourth analysis type is the Region Grower which is a simple form of complementarity analysis, e.g.&nbsp;to find the set of groups that maximise the shared richness. It is actually implemented using the cluster analysis algorithm with the cluster metric set to maximise the index of choice. The interface is almost the same as for cluster analyses so it is not described here.</p>
 <section id="building-a-spatial-index" class="level2">
 <h2 class="anchored" data-anchor-id="building-a-spatial-index">Building a Spatial Index</h2>
 <p>We will build a <strong>spatial index</strong> for our new BaseData object. A spatial index enables analyses using this BaseData to run faster (though beware that some user-defined spatial conditions will not work with a spatial index). Note that an index can be deleted/rebuilt at any time, and these changes affect only subsequent analyses, not those that preceded any change. If you are testing different index sizes using the same BaseData, delete previous analysis outputs to avoid reusing cached neighbour sets.</p>
 <p>Select <em>Build Spatial Index</em> from the <em>Analyses</em> menu option:</p>
 <p><img src="images/ch5/image5.0.png" class="img-fluid"></p>
-<p>For most purposes, accept the index sizes suggested by the system (see <a href="https://github.com/shawnlaffan/biodiverse/wiki/KeyConcepts#using-the-spatial-index">here</a>] for additional details on setting optimal index sizes). Note that index size refers to how finely Biodiverse divides spatial data into blocks for faster neighbour searching. Smaller blocks maximise precision but may involve more comparisons (longer processing time). Larger blocks may compromise precision for faster processing time.</p>
+<p>For most purposes, accept the index sizes suggested by the system (see <a href="https://github.com/shawnlaffan/biodiverse/wiki/KeyConcepts#using-the-spatial-index">here</a>] for additional details on setting optimal index sizes). Note that index size refers to how finely Biodiverse divides spatial data into blocks for faster neighbour searching. Smaller blocks maximise precision but may involve more comparisons to identify the set of blocks to search (longer processing time). Larger blocks may compromise precision for faster processing time.</p>
 <p>Click <strong>OK</strong> to build the spatial index. A pop-up dialog notifies you that the index has been built <strong><em>(OK).</em></strong></p>
 <p><img src="images/ch5/image5.1.png" class="img-fluid"></p>
+</section>
+<section id="running-a-spatial-moving-window-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="running-a-spatial-moving-window-analysis">Running a Spatial (Moving Window) Analysis</h2>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>The Spatial Analyses are a moving window analyses (because nearly all analyses in Biodiverse are spatial in some way) and are another method of identifying spatial patterns in your data. Depending upon the exact nature of your data, it is likely that the Groups comprising your BaseData constitute a geographic surface. Moving windows are used to systematically iterate across this space, with one or two <strong>neighbourhoods</strong> of the moving window being used to assess the labels/values aggregated in the Groups. The window might also consist only of the processing group, with no neighbours (each group is analysed separately).</p>
+<p>To run a moving window analysis, you will need to have <a href="#open-or-import-data">imported or loaded</a> a BaseData object and ideally built a <a href="#heading=h.3as4poj">spatial index</a> for this BaseData. These instructions assume you have either imported the sample data above, or you can open the example BaseData object ’<em>example_data.bds</em>’in the Biodiverse data folder.</p>
+<p>Select a Basedata object by clicking on it and open the menu option <em>Analyses -&gt; Spatial</em> and the spatial tab appears:</p>
+<p><img src="images/ch5/image5.6.png" class="img-fluid"></p>
+<p>The Spatial tab has two main sections where you can set options. The upper section (<em>Parameters</em>) determines the parameters used in defining the two neighbour sets used in the spatial analysis (the second is optional) as well as the definition query. The lower (<em>Calculations to run for each neighbourhood</em>) determines the subsequent calculations that will be run for the set of neighbours related to each group. You can select any number of calculations to perform.</p>
+</section>
+<section id="setting-the-spatial-analysis-options" class="level3">
+<h3 class="anchored" data-anchor-id="setting-the-spatial-analysis-options">Setting the Spatial Analysis Options</h3>
+<p>The <strong>Name</strong> option is the name used in the system. You can accept the default, or enter a new name (you cannot have duplicate names within the same BaseData object).</p>
+<p>The <strong>Neighbour set 1</strong> and <strong>Neighbour set 2</strong> text boxes allow you to define the neighbour sets used for the calculations (see <a href="https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions%20for%20further%20details">Spatial Conditions</a>). The size and shape of the neighbourhoods define the set of groups considered in an analysis. It is up to you to decide what sort of neighbourhoods and how many to use for your analysis. The system provides considerable flexibility in this regard: both neighbour sets may be arbitrarily defined independently of each other, and you are not obliged to specify a second neighbourhood.</p>
+<p>The default condition in the <em>Neighbour set</em> 1 text box is ‘<em>sp_self_only()</em>’. This restricts the neighbourhood to one cell/group (the processing group, which is the group being processed at an iteration). The default condition in the <em>Neighbour set 2</em> text box ‘<em>sp_circle (radius =&gt; 100000)</em>’ defines a circular neighbourhood of 100000 units centred on the processing group. The units are whatever the original data used, and for the example data, this is a 100 km or one cell radius. Make sure to uncomment the <em>#</em> for the function to be applied.</p>
+<p>These default conditions are appropriate for our sample data, but we will modify the second condition. Change the circle radius from <em>100000</em> to <em>200000</em>.</p>
+<p>See <a href="https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions">Spatial Conditions</a> for more detail on defining the neighbourhood sets (e.g.&nbsp;for the range of functions that you can use to specify neighbourhoods).</p>
+<p>Note that the use of neighbourhoods varies according to the type of calculation selected for analysis (see <a href="#6.3.3-selecting-indices-to-calculate">Selecting Indices</a> below). Some calculations aggregate the neighbourhoods into a single set (e.g.&nbsp;<a href="https://github.com/shawnlaffan/biodiverse/wiki/Indices#endemism-whole">endemism_whole</a>), others compare the labels in the first neighbour set with those in the second (e.g.&nbsp;<a href="http://code.google.com/p/biodiverse/wiki/Indices#Taxonomic_Dissimilarity_and_Comparison">Jaccard and other dissimilarity indices</a>), while others use the first set to define the list of labels to use but then consider distributions across both neighbour sets (e.g.&nbsp;<a href="http://code.google.com/p/biodiverse/wiki/Indices#Endemism_and_Rarity">endemism_central</a>). Some will not be run unless two neighbour sets are defined, primarily the turnover calculations.</p>
+<p>The <strong>Definition query</strong> text box allows the analysis to be applied to only a subset of groups, as described in the <a href="#5.2.1-setting-cluster-analysis-parameters">setting cluster analysis parameters</a>section above (those which satisfy the criteria in the definition query, but note that all groups are still considered as possible neighbours).Leave this blank for this session. For details of setting a definition query, see <a href="https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions#definition-queries">Definition Queries</a>.</p>
+<p>The Verify buttons let you know if the spatial conditions entered are syntactically valid.</p>
+</section>
+<section id="selecting-indices-to-calculate" class="level3">
+<h3 class="anchored" data-anchor-id="selecting-indices-to-calculate">Selecting indices to calculate</h3>
+<p>In the calculation section, use the check boxes to select which indices you want to calculate. For the sample session, click the arrow buttons next to the <em>Endemism,</em> <em>Lists and Counts</em> and <em>Taxonomic Dissimilarity and Comparison</em> to display their subsets. Select <em>Endemism central</em> (<em>Endemism</em>)<em>, Redundancy</em> and <em>Richness</em> (<em>Lists and Counts</em>) and <em>Sorenson</em> (<em>Taxonomic Dissimilarity and Comparison</em>). Note, if the parent category is selected (e.g.&nbsp;Endemism), all subset indices within that set will be calculated.</p>
+<p>Details about the full range of indices are available from the <a href="https://github.com/shawnlaffan/biodiverse/wiki/Indices">Indices</a> page.</p>
+<p>Click on the <strong><em>Go!</em></strong> button. The system will then run the selected spatial analyses.</p>
+<p><img src="images/ch5/image5.7.png" class="img-fluid"></p>
+</section>
+<section id="viewing-the-spatial-analysis-results" class="level3">
+<h3 class="anchored" data-anchor-id="viewing-the-spatial-analysis-results">Viewing the Spatial Analysis Results</h3>
+<p>Once the analysis is complete, the system asks you whether you want to display the results. Click <em>Yes</em> and you will be shown a map of the moving window analysis results. Pull the pane down to view the options you used, for example to change them and re-run the analysis.</p>
+<p><img src="images/ch5/image5.8.png" class="img-fluid"></p>
+<p>At this point, it may be useful to use the <em>Overlays</em> function (explained in section <a href="#4.2.1-map-overlays"><strong><em>4.2.1</em></strong></a>) to analyse results in their geographic context. Note that currently, adding an overlay can slow processing time when wanting to pan, select or hover over groups and nodes.</p>
+<p><img src="images/ch5/image5.8_1.png" class="img-fluid"></p>
+</section>
+<section id="running-analysis-with-local-neighbours" class="level3">
+<h3 class="anchored" data-anchor-id="running-analysis-with-local-neighbours">Running analysis with local neighbours</h3>
+<p>In the above moving window spatial analysis, the output visualisations only provided a single cell output of iterations within the map (black dot within the group cell).</p>
+<p>However, altering the second neighbour entry to ”sp_circle (radius = &gt; 500000)” when setting the initial analysis parameters (noted above), can identify aggregated relationships of these cells with their “neighbours”.</p>
+<p><img src="images/ch5/image5.11.png" class="img-fluid"></p>
+<p>The result is a display like this:</p>
+<p><img src="images/ch5/image5.12.png" class="img-fluid"></p>
+<p>Hovering over a group will highlight the groups used in the calculations, a solid circle for those in the first neighbourhood and a dash for those in the second neighbourhood. Right-click on a group to keep the highlighting at that group until the mouse is left-clicked on any group. You can control whether these are displayed or just display one set by using the <strong><em>Nbr highlighting</em></strong> option under the <strong><em>Map</em></strong> list in the left-hand toolbar.</p>
+<p><img src="images/ch5/image5.12_1.png" class="img-fluid"></p>
+<p>Holding the control key while clicking on a group, or clicking on a group with the middle mouse button, produces a pop-up list with all the results in it. It also includes lists of the elements (groups) in each neighbour set (Elements set1, set2 and all) and of the labels in these neighbour sets (Labels set1, set2 and all). The “All” list is the union of neighbour sets 1 and 2.</p>
+<p>The tree branches are coloured according to whether they are found only in the first neighbour set (blue), the second neighbour set (red), both (black) or neither (grey). The screenshot above displays this. Also see the <a href="https://biodiverse-analysis-software.blogspot.com/2016/01/more-on-tree-visualisations-in.html">blog post</a>. <a href="https://biodiverse-analysis-software.blogspot.com/2017/09/visualise-spatial-analysis-results-on.html">Some indices can also be plotted on the tree</a>.</p>
+</section>
 </section>
 <section id="running-a-cluster-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="running-a-cluster-analysis">Running a Cluster Analysis</h2>
@@ -268,54 +318,6 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="images/ch5/image5.4.2_6.png" class="img-fluid"></p>
 <p>Note that hovering over different groups whilst the index group is selected will highlight additional branches. Blue branches are found <em>only</em> in the index cell; red branches are found <em>only</em> in the cell being hovered over. The branches in black are found in <em>both</em> neighbouring cells. Branches not found in the two cells are in grey (reduces visual impact without hiding it). See this <a href="https://methodsblog.com/2016/01/22%20biodiverse/">blog post</a> for further information about how Biodiverse visualises phylodiversity.</p>
 <p><img src="images/ch5/image5.4.2_7.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="running-a-spatial-moving-window-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="running-a-spatial-moving-window-analysis">Running a Spatial (Moving Window) Analysis</h2>
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>The Spatial Analyses are a moving window analyses (because nearly all analyses in Biodiverse are spatial in some way) and are another method of identifying spatial patterns in your data. Depending upon the exact nature of your data, it is likely that the Groups comprising your BaseData constitute a geographic surface. Moving windows are used to systematically iterate across this space, with one or two <strong>neighbourhoods</strong> of the moving window being used to assess the labels/values aggregated in the Groups. The window might also consist only of the processing group, with no neighbours (each group is analysed separately).</p>
-<p>To run a moving window analysis, you will need to have <a href="#open-or-import-data">imported or loaded</a> a BaseData object and ideally built a <a href="#heading=h.3as4poj">spatial index</a> for this BaseData. These instructions assume you have either imported the sample data above, or you can open the example BaseData object ’<em>example_data.bds</em>’in the Biodiverse data folder.</p>
-<p>Select a Basedata object by clicking on it and open the menu option <em>Analyses -&gt; Spatial</em> and the spatial tab appears:</p>
-<p><img src="images/ch5/image5.6.png" class="img-fluid"></p>
-<p>The Spatial tab has two main sections where you can set options. The upper section (<em>Parameters</em>) determines the parameters used in defining the two neighbour sets used in the spatial analysis (the second is optional) as well as the definition query. The lower (<em>Calculations to run for each neighbourhood</em>) determines the subsequent calculations that will be run for the set of neighbours related to each group. You can select any number of calculations to perform.</p>
-</section>
-<section id="setting-the-spatial-analysis-options" class="level3">
-<h3 class="anchored" data-anchor-id="setting-the-spatial-analysis-options">Setting the Spatial Analysis Options</h3>
-<p>The <strong>Name</strong> option is the name used in the system. You can accept the default, or enter a new name (you cannot have duplicate names within the same BaseData object).</p>
-<p>The <strong>Neighbour set 1</strong> and <strong>Neighbour set 2</strong> text boxes allow you to define the neighbour sets used for the calculations (see <a href="https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions%20for%20further%20details">Spatial Conditions</a>). The size and shape of the neighbourhoods define the set of groups considered in an analysis. It is up to you to decide what sort of neighbourhoods and how many to use for your analysis. The system provides considerable flexibility in this regard: both neighbour sets may be arbitrarily defined independently of each other, and you are not obliged to specify a second neighbourhood.</p>
-<p>The default condition in the <em>Neighbour set</em> 1 text box is ‘<em>sp_self_only()</em>’. This restricts the neighbourhood to one cell/group (the processing group, which is the group being processed at an iteration). The default condition in the <em>Neighbour set 2</em> text box ‘<em>sp_circle (radius =&gt; 100000)</em>’ defines a circular neighbourhood of 100000 units centred on the processing group. The units are whatever the original data used, and for the example data, this is a 100 km or one cell radius. Make sure to uncomment the <em>#</em> for the function to be applied.</p>
-<p>These default conditions are appropriate for our sample data, but we will modify the second condition. Change the circle radius from <em>100000</em> to <em>200000</em>.</p>
-<p>See <a href="https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions">Spatial Conditions</a> for more detail on defining the neighbourhood sets (e.g.&nbsp;for the range of functions that you can use to specify neighbourhoods).</p>
-<p>Note that the use of neighbourhoods varies according to the type of calculation selected for analysis (see <a href="#6.3.3-selecting-indices-to-calculate">Selecting Indices</a> below). Some calculations aggregate the neighbourhoods into a single set (e.g.&nbsp;<a href="https://github.com/shawnlaffan/biodiverse/wiki/Indices#endemism-whole">endemism_whole</a>), others compare the labels in the first neighbour set with those in the second (e.g.&nbsp;<a href="http://code.google.com/p/biodiverse/wiki/Indices#Taxonomic_Dissimilarity_and_Comparison">Jaccard and other dissimilarity indices</a>), while others use the first set to define the list of labels to use but then consider distributions across both neighbour sets (e.g.&nbsp;<a href="http://code.google.com/p/biodiverse/wiki/Indices#Endemism_and_Rarity">endemism_central</a>). Some will not be run unless two neighbour sets are defined, primarily the turnover calculations.</p>
-<p>The <strong>Definition query</strong> text box allows the analysis to be applied to only a subset of groups, as described in the <a href="#5.2.1-setting-cluster-analysis-parameters">setting cluster analysis parameters</a>section above (those which satisfy the criteria in the definition query, but note that all groups are still considered as possible neighbours).Leave this blank for this session. For details of setting a definition query, see <a href="https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions#definition-queries">Definition Queries</a>.</p>
-<p>The Verify buttons let you know if the spatial conditions entered are syntactically valid.</p>
-</section>
-<section id="selecting-indices-to-calculate" class="level3">
-<h3 class="anchored" data-anchor-id="selecting-indices-to-calculate">Selecting indices to calculate</h3>
-<p>In the calculation section, use the check boxes to select which indices you want to calculate. For the sample session, click the arrow buttons next to the <em>Endemism,</em> <em>Lists and Counts</em> and <em>Taxonomic Dissimilarity and Comparison</em> to display their subsets. Select <em>Endemism central</em> (<em>Endemism</em>)<em>, Redundancy</em> and <em>Richness</em> (<em>Lists and Counts</em>) and <em>Sorenson</em> (<em>Taxonomic Dissimilarity and Comparison</em>). Note, if the parent category is selected (e.g.&nbsp;Endemism), all subset indices within that set will be calculated.</p>
-<p>Details about the full range of indices are available from the <a href="https://github.com/shawnlaffan/biodiverse/wiki/Indices">Indices</a> page.</p>
-<p>Click on the <strong><em>Go!</em></strong> button. The system will then run the selected spatial analyses.</p>
-<p><img src="images/ch5/image5.7.png" class="img-fluid"></p>
-</section>
-<section id="viewing-the-spatial-analysis-results" class="level3">
-<h3 class="anchored" data-anchor-id="viewing-the-spatial-analysis-results">Viewing the Spatial Analysis Results</h3>
-<p>Once the analysis is complete, the system asks you whether you want to display the results. Click <em>Yes</em> and you will be shown a map of the moving window analysis results. Pull the pane down to view the options you used, for example to change them and re-run the analysis.</p>
-<p><img src="images/ch5/image5.8.png" class="img-fluid"></p>
-<p>At this point, it may be useful to use the <em>Overlays</em> function (explained in section <a href="#4.2.1-map-overlays"><strong><em>4.2.1</em></strong></a>) to analyse results in their geographic context. Note that currently, adding an overlay can slow processing time when wanting to pan, select or hover over groups and nodes.</p>
-<p><img src="images/ch5/image5.8_1.png" class="img-fluid"></p>
-</section>
-<section id="running-analysis-with-local-neighbours" class="level3">
-<h3 class="anchored" data-anchor-id="running-analysis-with-local-neighbours">Running analysis with local neighbours</h3>
-<p>In the above moving window spatial analysis, the output visualisations only provided a single cell output of iterations within the map (black dot within the group cell).</p>
-<p>However, altering the second neighbour entry to ”sp_circle (radius = &gt; 500000)” when setting the initial analysis parameters (noted above), can identify aggregated relationships of these cells with their “neighbours”.</p>
-<p><img src="images/ch5/image5.11.png" class="img-fluid"></p>
-<p>The result is a display like this:</p>
-<p><img src="images/ch5/image5.12.png" class="img-fluid"></p>
-<p>Hovering over a group will highlight the groups used in the calculations, a solid circle for those in the first neighbourhood and a dash for those in the second neighbourhood. Right-click on a group to keep the highlighting at that group until the mouse is left-clicked on any group. You can control whether these are displayed or just display one set by using the <strong><em>Nbr highlighting</em></strong> option under the <strong><em>Map</em></strong> list in the left-hand toolbar.</p>
-<p><img src="images/ch5/image5.12_1.png" class="img-fluid"></p>
-<p>Holding the control key while clicking on a group, or clicking on a group with the middle mouse button, produces a pop-up list with all the results in it. It also includes lists of the elements (groups) in each neighbour set (Elements set1, set2 and all) and of the labels in these neighbour sets (Labels set1, set2 and all). The “All” list is the union of neighbour sets 1 and 2.</p>
-<p>The tree branches are coloured according to whether they are found only in the first neighbour set (blue), the second neighbour set (red), both (black) or neither (grey). The screenshot above displays this. Also see the <a href="https://biodiverse-analysis-software.blogspot.com/2016/01/more-on-tree-visualisations-in.html">blog post</a>. <a href="https://biodiverse-analysis-software.blogspot.com/2017/09/visualise-spatial-analysis-results-on.html">Some indices can also be plotted on the tree</a>.</p>
 </section>
 </section>
 <section id="running-a-randomisation-analysis" class="level2">
