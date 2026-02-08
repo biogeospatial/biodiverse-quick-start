@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,15 +32,17 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <link href="./5-data-analysis.html" rel="next">
 <link href="./3-import.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dda8909163e0b4f3670ba323ebd66e56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -72,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -173,10 +175,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#label-lists" id="toc-label-lists" class="nav-link active" data-scroll-target="#label-lists"><span class="header-section-number">5.0.1</span> Label lists</a></li>
-  <li><a href="#group-grid" id="toc-group-grid" class="nav-link" data-scroll-target="#group-grid"><span class="header-section-number">5.0.2</span> Group grid</a></li>
-  <li><a href="#tree" id="toc-tree" class="nav-link" data-scroll-target="#tree"><span class="header-section-number">5.0.3</span> Tree</a></li>
-  <li><a href="#matrix-grid" id="toc-matrix-grid" class="nav-link" data-scroll-target="#matrix-grid"><span class="header-section-number">5.0.4</span> Matrix grid</a></li>
+  <li><a href="#label-lists" id="toc-label-lists" class="nav-link active" data-scroll-target="#label-lists"><span class="header-section-number">5.1</span> Label lists</a>
+  <ul class="collapse">
+  <li><a href="#group-grid" id="toc-group-grid" class="nav-link" data-scroll-target="#group-grid"><span class="header-section-number">5.1.1</span> Group grid</a></li>
+  <li><a href="#map-overlays" id="toc-map-overlays" class="nav-link" data-scroll-target="#map-overlays"><span class="header-section-number">5.1.2</span> Map Overlays</a></li>
+  </ul></li>
+  <li><a href="#tree" id="toc-tree" class="nav-link" data-scroll-target="#tree"><span class="header-section-number">5.2</span> Tree</a>
+  <ul class="collapse">
+  <li><a href="#scree-plot" id="toc-scree-plot" class="nav-link" data-scroll-target="#scree-plot"><span class="header-section-number">5.2.1</span> Scree plot</a></li>
+  </ul></li>
+  <li><a href="#matrix-grid" id="toc-matrix-grid" class="nav-link" data-scroll-target="#matrix-grid"><span class="header-section-number">5.3</span> Matrix grid</a></li>
   </ul>
 </nav>
     </div>
@@ -208,47 +216,63 @@ ul.task-list li input[type="checkbox"] {
 <p>The panes constitute a linked visualisation system so that the selection (labels, groups, matrix cells or tree nodes) in one pane is reflected in the other panes. If more than one label is contained in the selection in any pane, the groups in the group grid are coloured with a hue of red according to the number of the selected labels they contain (dark red for more, lighter red for less, white for none).</p>
 <p>Note that the sizes of the panes can be changed by clicking and dragging the dividing bars between them.</p>
 <p>We now describe how each pane works.</p>
-<section id="label-lists" class="level3" data-number="5.0.1">
-<h3 data-number="5.0.1" class="anchored" data-anchor-id="label-lists"><span class="header-section-number">5.0.1</span> Label lists</h3>
+<section id="label-lists" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="label-lists"><span class="header-section-number">5.1</span> Label lists</h2>
 <p>Click on any row in the list to highlight a single label. Hold the shift key down to select a contiguous block, and the control key to select (or deselect) non-contiguous labels. The second list is only visible if the project has a selected matrix. The main use for the second list is to be able to select labels from each list to highlight specific cells – or columns of cells – in the matrix pane, if a matrix is currently selected. The first (top) label list represents matrix rows, while the second (bottom) label list represents matrix columns.</p>
-<p><img src="images/image4.1.png" class="img-fluid"></p>
+<p><img src="images/image4.1.png" class="img-fluid">.</p>
 <p>Sort the label lists by clicking on the column headers. The default order is by label, in a <a href="https://en.wikipedia.org/wiki/Natural_sort_order">natural sort order</a>. Re-ordering of these lists also re-orders the matrix plot (the upper list will sort the rows, the lower list will sort the columns). The current selection in the lists is updated whenever you select elements in one of the other panes.</p>
 <p>The <strong><em>Variety</em></strong> column shows the number of groups (grid cells) each label occurs in.</p>
 <p>The <strong><em>Samples</em></strong> column lists the number of times a label occurs across all groups.</p>
-<p>The <strong><em>Redundancy</em></strong> column shows the sample redundancy for each label. This is calculated as (1 – variety / samples). A value close to one represents a good overall sample of a label relative to the number of groups it occurs in (many redundant samples). A value of zero means that there is only one sample per group the label occurs in, and it is therefore not well sampled.</p>
+<p>The <strong><em>Redundancy</em></strong> column shows the sample redundancy for each label. This is calculated as (1 – variety/samples). A value close to one represents a good overall sample of a label relative to the number of groups it occurs in (many redundant samples). A value of zero means that there is only one sample per group the label occurs in, and it is therefore not well sampled. The redundancy value can be understood as a measure of data sensitivity (lose one sample, will you lose one unit of range)</p>
 <p>The <strong><em>Selected</em></strong> / <strong><em>Col selected</em></strong> columns have a value of 1 when that label is selected, allowing the user to raise the selected set to the top of the list. The <strong><em>Col selected</em></strong> value is 1 only when one selects a matrix column, either through the lower Label List or on the matrix itself.</p>
-</section>
-<section id="group-grid" class="level3" data-number="5.0.2">
-<h3 data-number="5.0.2" class="anchored" data-anchor-id="group-grid"><span class="header-section-number">5.0.2</span> Group grid</h3>
+<section id="group-grid" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="group-grid"><span class="header-section-number">5.1.1</span> Group grid</h3>
 <p>The group grid displays the groups. Normally this is a map of the data (e.g.&nbsp;if your group data consists of some form of geographic coordinates), but there is no reason that you are restricted to using geographic locations for your groups. If your data use text group axes then the system will assign them to cells on a grid based on an alphabetical sorting.</p>
 <p>Hovering over a group will highlight in bold the nodes in the Tree corresponding to the labels it contains, if a tree is displayed.</p>
-<p>Left-clicking on a group will highlight it in dark red. Other groups may also be highlighted depending on the number of labels they share with the selected group (darker red for more shared labels, lighter red for less, white for no labels in common). Groups will then be highlighted according to the number of labels they have in common with the selected group. Labels in selected groups will also be highlighted in the top label list (although the list does not automatically jump to them). Drawing a box over the grid with the left mouse button selects labels from all the groups in the box, allocating the hue based on the species richness of the selection rather than a single group.</p>
-<p><img src="images/image4.2.png" class="img-fluid"></p>
-<p>While holding the control key down, click on a group to display a pop-up window that shows you a list of the labels it contains and the sample size in that group for each label. To bring up any group’s detailed information without changing current highlighting, use the middle/wheel mouse button to select a group.</p>
+<p><strong>image needed</strong></p>
+<p>Left-clicking on a group will highlight it in dark red. If the selected group contains more than one label, the other highlighted groups will range in a red hue, depending on the number of labels they have in common with the selected group (darker red for more shared labels, lighter red for fewer, and white for no labels in common). If the selected group only contains one label, all other highlighted groups will be the same dark red (only one label is common across all).</p>
+<p>Labels in selected groups will also be highlighted in the top label list (although the list does not automatically jump to them). Drawing a box over the grid with the left mouse button selects labels from all the groups in the box, allocating the red hue based on the species richness of the selection rather than a single group. Groups outside the box perimeter will be highlighted if they contain the labels within the box selection.</p>
+<p><img src="images/image4.2.png" class="img-fluid"> <img src="images/image4.2_2.png" class="img-fluid"> <img src="images/image4.2_3.png" class="img-fluid"></p>
+<p>While holding the Control key down, click on a group to display a pop-up window that shows a list of labels it contains and the sample size for each label within that group. To bring up any group’s detailed information without changing the current highlighting, use the middle/wheel mouse button to select a group. Data lists can be directly copied to external programs (e.g.&nbsp;Excel)</p>
 <p><img src="images/image4.3.png" class="img-fluid"></p>
-<p>Alter the Group Grid zoom level using the three zoom buttons at the left of the pane. For more details about this see <a href="https://biodiverse-analysis-software.blogspot.com/2014/10/the-pan-and-zoom-functionality-in.html">the relevant blog post</a>.</p>
+<p>Adjust the Group Grid zoom level using the three zoom buttons on the left sidebar. This includes a Zoom to fit button, which centres the group map when the pane is clicked on. For details about keyboard shortcuts for these functions, see (the relevant blog post)[https://biodiverse-analysis-software.blogspot.com/2014/10/the-pan-and-zoom-functionality-in.html]</p>
 <p><img src="images/image4.4.png" class="img-fluid"></p>
+<p>NOTE: Make sure to switch back to the mouse arrow control when selecting elements across all panes. Selections cannot be made on the Group, Matrix of Tree panes when pan control is selected.</p>
+<p><img src="images/image4.4.1.png" class="img-fluid"></p>
 </section>
-<section id="tree" class="level3" data-number="5.0.3">
-<h3 data-number="5.0.3" class="anchored" data-anchor-id="tree"><span class="header-section-number">5.0.3</span> Tree</h3>
+<section id="map-overlays" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="map-overlays"><span class="header-section-number">5.1.2</span> Map Overlays</h3>
+<p>External feature (vector) data can be imported to plot overlays in the Group pane. This can provide more insight into group distribution, especially if they are geographically related. Overlays may include polylines or polygons, for example, national border maps or bioregions.</p>
+<p>To plot overlays, select the Overlay button in the Map menu on the left-hand control panel. A list of the currently available overlays will be displayed. To add a new overlay, click Add, and select the desired overlay file (software currently only supports Shapefiles). Note: files must use the same coordinate system as the BaseData.</p>
+<p>Select the box next to the file you wish to plot and select whether you want to “plot above cells”. You can edit the line width, opacity and colour of the overlay as well (These elements can be edited after plotting). To plot, click OK. Note: Whilst multiple data sets can be loaded, only one can be displayed. If you wish to plot more than one set of features, they need to be combined into a new data set using a GIS.</p>
+<p>To remove the currently displayed overlay, open the Overlays menu and click the Clear button. Note: clicking Delete in the Overlays window will delete one shapefile from the list but will not remove it from the display if it is currently being displayed. You must click Clear as well.</p>
+<p>Using an overlay may result in slower display processing (e.g.&nbsp;when highlighting groups), particularly with more detailed shapefiles.</p>
+<p><img src="images/image4.2.1.png" class="img-fluid"> <img src="images/image4.2.1_2.png" class="img-fluid"> <img src="images/image4.2.1_3.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="tree" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="tree"><span class="header-section-number">5.2</span> Tree</h2>
 <p>The tree is generally a representation of the phylogenetic similarities between labels, although it could be used for anything that uses such a structure. In this pane, you should see two sections (assuming a tree object is selected in the main toolbar at the top of the window). The upper section displays the relationship between labels as a dendrogram.</p>
-<p>The dendrogram can be plotted by node depth or length via the <em>Options</em> button at the bottom of this pane. This menu also allows you to change highlighting settings.</p>
-<p>Hovering over a tree node highlights the groups containing the node’s labels in the group grid. It does this using a circular symbol. Right click on the node to fix the highlights until the next mouse click in the tree pane.</p>
-<p>Left-clicking on a branch selects all labels in terminal descendants (single-label nodes) of that node in the tree that are also in the label lists. Any nodes containing a label that is not present in the BaseData will remain black in the tree.</p>
-<p><img src="images/image4.5.png" class="img-fluid"></p>
+<p><img src="images/image4.3_1.png" class="img-fluid"></p>
+<p>The dendrogram can be plotted by node length or depth via the <em>Tree</em> menu on the left under the zoom/pan panel (and also range weighted variants using the current BaseData). This menu also allows you to adjust the width of tree branches and to change highlighting settings.</p>
+<p><img src="images/image4.3_2.png" class="img-fluid"></p>
+<p>Hovering over a tree node highlights the groups containing the node’s labels in the group grid. It does this using a circular symbol. Right-click on the node to fix the highlights until the next mouse click in the tree pane.</p>
+<p><img src="images/image4.3_3.png" class="img-fluid"></p>
+<p>Left-clicking on a branch selects all labels in terminal descendants (common ancestors/single-label nodes) of that node in the tree that are also in the label lists. Any nodes containing a label that is not present in the BaseData will remain black in the tree.</p>
+<p><img src="images/image4.3_4.png" class="img-fluid"></p>
 <p>Control-click on a node to display a pop-up window from which you can access lists of the labels, groups and branch characteristics (length, name, etc).</p>
 <p><img src="images/image4.6.png" class="img-fluid"></p>
-<p>Note the blue vertical sliding bar on the right side of the tree pane. Hovering the mouse over this bar will display three numbers. The first two numbers indicate the quantity and percentage of nodes present to the right of the bar. If the tree is plotted by node depth, the third number indicates the depth at the current bar position. If the plot is by node length, the third number indicates the distance from the bar position to the most distant (left-most) leaf node.</p>
-<section id="scree-plot" class="level4" data-number="5.0.3.1">
-<h4 data-number="5.0.3.1" class="anchored" data-anchor-id="scree-plot"><span class="header-section-number">5.0.3.1</span> Scree plot</h4>
-<p>The scree plot is hidden by default but can be dragged up from the bottom of the tree pane. This plot displays a simple graph of the proportion of nodes present to the left of an imaginary vertical line cut through the tree above. Move the mouse toward the bottom of the tree pane until it indicates a bar that you can click on and drag upward to reveal the graph.</p>
+<p>Note the blue vertical sliding bar on the right side of the tree pane. Left-clicking and dragging this bar will display three numbers. The first two numbers indicate the quantity and percentage of nodes present to the right of the bar. If the tree is plotted by node depth, the third number indicates the depth at the current bar position. If the plot is by node length, the third number indicates the distance from the bar position to the most distant (left-most) leaf node (tree terminus).</p>
+<p><img src="images/image4.6.png" class="img-fluid"><img src="images/image4.3_6" class="img-fluid"></p>
+<section id="scree-plot" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="scree-plot"><span class="header-section-number">5.2.1</span> Scree plot</h3>
+<p>The scree plot is the pane below the tree. It may be hidden by default, but can be dragged up from the bottom of the tree pane if not visible. This plot displays a simple graph of the proportion of nodes present to the left of an imaginary vertical line cut through the tree above.</p>
 <p><img src="images/image4.7.png" class="img-fluid"></p>
 </section>
 </section>
-<section id="matrix-grid" class="level3" data-number="5.0.4">
-<h3 data-number="5.0.4" class="anchored" data-anchor-id="matrix-grid"><span class="header-section-number">5.0.4</span> Matrix grid</h3>
-<p>Each matrix grid cell represents a pair of labels from the label lists, coloured according to the pair’s matrix value, with a colour scale for these values on the right of the matrix.</p>
-<p>Cells in the matrix grid are only coloured if both labels they represent are present in the BaseData label list. If one or both of its labels are not present in the BaseData, a cell remains white.</p>
+<section id="matrix-grid" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="matrix-grid"><span class="header-section-number">5.3</span> Matrix grid</h2>
+<p>Each matrix grid cell represents a pair of labels from the label lists, coloured according to the pair’s matrix value, with a colour scale for these values on the right of the matrix. Cells in the matrix grid are only coloured if both labels they represent are present in the BaseData label list. If one or both of its labels are not present in the BaseData, a cell remains white.</p>
 <p>The system lists which element you are hovering over at the top of the pane, indicating the label pair and its matrix value.</p>
 <p>Click on a single element (cell) to select one pair of labels. The two label lists will automatically adjust to show these two (the top list highlighting the label corresponding to the matrix row, the bottom list highlighting the label corresponding to the matrix column). All cells in the group grid containing those labels will be highlighted in red as per the groups, as will the relevant nodes on the tree.</p>
 <p>You can also click and drag the left mouse button to select a rectangular region in the matrix. This highlights the selected labels in the other panes, adjusting the label lists to reflect the new selection.</p>
@@ -259,239 +283,243 @@ ul.task-list li input[type="checkbox"] {
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -499,185 +527,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./3-import.html" class="pagination-link" aria-label="Importing Data">
