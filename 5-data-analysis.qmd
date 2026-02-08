@@ -2,6 +2,10 @@
 title: "Data Analysis"
 ---
 
+There are three main analyses in Biodiverse, moving window (spatial) analyses, cluster analyses and randomisations.  These are described here, following a description of the spatial index which you would normally want to use to speed up any spatial conditions used in the analyses.  
+
+A fourth analysis type is the Region Grower which is a simple form of complementarity analysis, e.g. to find the set of groups that maximise the shared richness.  It is actually implemented using the cluster analysis algorithm with the cluster metric set to maximise the index of choice.  The interface is almost the same as for cluster analyses so it is not described here.  
+
 ##  Building a Spatial Index
 
 We will build a **spatial index** for our new BaseData object. A spatial index enables analyses using this BaseData to run faster (though beware that some user-defined spatial conditions will not work with a spatial index). Note that an index can be deleted/rebuilt at any time, and these changes affect only subsequent analyses, not those that preceded any change. If you are testing different index sizes using the same
@@ -11,11 +15,86 @@ Select *Build Spatial Index* from the *Analyses* menu option:
 
 ![](images/ch5/image5.0.png)
 
-For most purposes, accept the index sizes suggested by the system (see [here](https://github.com/shawnlaffan/biodiverse/wiki/KeyConcepts#using-the-spatial-index)] for additional details on setting optimal index sizes). Note that index size refers to how finely Biodiverse divides spatial data into blocks for faster neighbour searching. Smaller blocks maximise precision but may involve more comparisons (longer processing time). Larger blocks may compromise precision for faster processing time.
+For most purposes, accept the index sizes suggested by the system (see [here](https://github.com/shawnlaffan/biodiverse/wiki/KeyConcepts#using-the-spatial-index)] for additional details on setting optimal index sizes). Note that index size refers to how finely Biodiverse divides spatial data into blocks for faster neighbour searching. Smaller blocks maximise precision but may involve more comparisons to identify the set of blocks to search (longer processing time). Larger blocks may compromise precision for faster processing time.
 
 Click **OK** to build the spatial index. A pop-up dialog notifies you that the index has been built ***(OK).***
 
 ![](images/ch5/image5.1.png)
+
+##  Running a Spatial (Moving Window) Analysis
+
+###  Introduction
+
+The Spatial Analyses are a moving window analyses (because nearly all analyses in Biodiverse are spatial in some way) and are another method of identifying spatial patterns in your data. Depending upon the exact nature of your data, it is likely that the Groups comprising your BaseData constitute a geographic surface. Moving windows are used to systematically iterate across this space, with one or two **neighbourhoods** of the moving window being used to assess the labels/values aggregated in the Groups. The window might also consist only of the processing group, with no neighbours (each group is analysed separately).
+
+To run a moving window analysis, you will need to have [imported or loaded](#open-or-import-data) a BaseData object and ideally built a [spatial index](#heading=h.3as4poj) for this BaseData. These instructions assume you have either imported the sample data above, or you can open the example BaseData object ‘*example\_data.bds*’in the Biodiverse data folder. 
+
+Select a Basedata object by clicking on it and open the menu option *Analyses \-\> Spatial* and the spatial tab appears:
+
+![](images/ch5/image5.6.png)
+
+The Spatial tab has two main sections where you can set options. The upper section (*Parameters*) determines the parameters used in defining the two neighbour sets used in the spatial analysis (the second is optional) as well as the definition query. The lower (*Calculations to run for each neighbourhood*) determines the subsequent calculations that will be run for the set of neighbours related to each group. You can select any number of calculations to perform.
+
+###  Setting the Spatial Analysis Options
+
+The **Name** option is the name used in the system. You can accept the default, or enter a new name (you cannot have duplicate names within the same BaseData object). 
+
+The **Neighbour set 1** and **Neighbour set 2** text boxes allow you to define the neighbour sets used for the calculations (see [Spatial Conditions](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions for further details)). The size and shape of the neighbourhoods define the set of groups considered in an analysis. It is up to you to decide what sort of neighbourhoods and how many to use for your analysis. The system provides considerable flexibility in this regard: both neighbour sets may be arbitrarily defined independently of each other, and you are not obliged to specify a second neighbourhood.
+
+The default condition in the *Neighbour set* 1 text box is '*sp_self_only()*'. This restricts the neighbourhood to one cell/group (the processing group, which is the group being processed at an iteration). The default condition in the *Neighbour set 2* text box '*sp_circle (radius =\> 100000)*' defines a circular neighbourhood of 100000 units centred on the processing group. The units are whatever the original data used, and for the example data, this is a 100 km or one cell radius. Make sure to uncomment the *\#* for the function to be applied.
+
+These default conditions are appropriate for our sample data, but we will modify the second condition. Change the circle radius from *100000* to *200000*.
+
+See [Spatial Conditions](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions) for more detail on defining the neighbourhood sets (e.g. for the range of functions that you can use to specify neighbourhoods).
+
+Note that the use of neighbourhoods varies according to the type of calculation selected for analysis (see [Selecting Indices](#6.3.3-selecting-indices-to-calculate) below). Some calculations aggregate the neighbourhoods into a single set (e.g. [endemism\_whole](https://github.com/shawnlaffan/biodiverse/wiki/Indices#endemism-whole)), others compare the labels in the first neighbour set with those in the second (e.g. [Jaccard and other dissimilarity indices](http://code.google.com/p/biodiverse/wiki/Indices#Taxonomic_Dissimilarity_and_Comparison)), while others use the first set to define the list of labels to use but then consider distributions across both neighbour sets (e.g. [endemism\_central](http://code.google.com/p/biodiverse/wiki/Indices#Endemism_and_Rarity)). Some will not be run unless two neighbour sets are defined, primarily the turnover calculations.  
+
+The **Definition query** text box allows the analysis to be applied to only a subset of groups, as described in the [setting cluster analysis parameters](#5.2.1-setting-cluster-analysis-parameters)section above (those which satisfy the criteria in the definition query, but note that all groups are still considered as possible neighbours).Leave this blank for this session. For details of setting a definition query, see [Definition
+Queries](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions#definition-queries).
+
+The Verify buttons let you know if the spatial conditions entered are syntactically valid.
+
+###  Selecting indices to calculate
+
+In the calculation section, use the check boxes to select which indices you want to calculate. For the sample session, click the arrow buttons next to the *Endemism,* *Lists and Counts* and *Taxonomic Dissimilarity and Comparison* to display their subsets. Select *Endemism central* (*Endemism*)*, Redundancy* and *Richness* (*Lists and Counts*) and *Sorenson* (*Taxonomic Dissimilarity and Comparison*). Note, if the parent category is selected (e.g. Endemism), all subset indices within that set will be calculated.
+
+Details about the full range of indices are available from the [Indices](https://github.com/shawnlaffan/biodiverse/wiki/Indices) page.
+
+Click on the ***Go\!*** button. The system will then run the selected spatial analyses.
+
+![](images/ch5/image5.7.png) 
+
+###  Viewing the Spatial Analysis Results
+
+Once the analysis is complete, the system asks you whether you want to display the results. Click *Yes* and you will be shown a map of the moving window analysis results. Pull the pane down to view the options you used, for example to change them and re-run the analysis.
+
+![](images/ch5/image5.8.png)
+
+At this point, it may be useful to use the *Overlays* function (explained in section [***4.2.1***](#4.2.1-map-overlays)) to analyse results in their geographic context. Note that currently, adding an overlay can slow processing time when wanting to pan, select or hover over groups and nodes.
+
+![](images/ch5/image5.8_1.png)
+
+
+###  Running analysis with local neighbours
+
+
+In the above moving window spatial analysis, the output visualisations only provided a single cell output of iterations within the map (black dot within the group cell).
+
+However, altering the second neighbour entry to ”sp\_circle (radius \= \> 500000)” when setting the initial analysis parameters (noted above), can identify aggregated relationships of these cells with their “neighbours”.
+
+![](images/ch5/image5.11.png)
+
+The result is a display like this: 
+
+![](images/ch5/image5.12.png)
+
+Hovering over a group will highlight the groups used in the calculations, a solid circle for those in the first neighbourhood and a dash for those in the second neighbourhood. Right-click on a group to keep the highlighting at that group until the mouse is left-clicked on any group. You can control whether these are displayed or just display one set by using the ***Nbr highlighting*** option under the ***Map*** list in the left-hand toolbar.
+
+![](images/ch5/image5.12_1.png)
+
+Holding the control key while clicking on a group, or clicking on a group with the middle mouse button, produces a pop-up list with all the results in it. It also includes lists of the elements (groups) in each neighbour set (Elements set1, set2 and all) and of the labels in these neighbour sets (Labels set1, set2 and all). The “All” list is the union of neighbour sets 1 and 2\. 
+
+The tree branches are coloured according to whether they are found only in the first neighbour set (blue), the second neighbour set (red), both (black) or neither (grey). The screenshot above displays this. Also see the [blog post](https://biodiverse-analysis-software.blogspot.com/2016/01/more-on-tree-visualisations-in.html). [Some indices can also be plotted on the tree](https://biodiverse-analysis-software.blogspot.com/2017/09/visualise-spatial-analysis-results-on.html).  
 
 ##  Running a Cluster Analysis
 
@@ -101,81 +180,6 @@ When an index group is selected, the label (node IDs) contained within the group
 Note that hovering over different groups whilst the index group is selected will highlight additional branches. Blue branches are found *only* in the index cell; red branches are found *only* in the cell being hovered over. The branches in black are found in *both* neighbouring cells. Branches not found in the two cells are in grey (reduces visual impact without hiding it). See this [blog post](https://methodsblog.com/2016/01/22 biodiverse/) for further information about how Biodiverse visualises phylodiversity.
 
 ![](images/ch5/image5.4.2_7.png) 
-
-##  Running a Spatial (Moving Window) Analysis
-
-###  Introduction
-
-The Spatial Analyses are a moving window analyses (because nearly all analyses in Biodiverse are spatial in some way) and are another method of identifying spatial patterns in your data. Depending upon the exact nature of your data, it is likely that the Groups comprising your BaseData constitute a geographic surface. Moving windows are used to systematically iterate across this space, with one or two **neighbourhoods** of the moving window being used to assess the labels/values aggregated in the Groups. The window might also consist only of the processing group, with no neighbours (each group is analysed separately).
-
-To run a moving window analysis, you will need to have [imported or loaded](#open-or-import-data) a BaseData object and ideally built a [spatial index](#heading=h.3as4poj) for this BaseData. These instructions assume you have either imported the sample data above, or you can open the example BaseData object ‘*example\_data.bds*’in the Biodiverse data folder. 
-
-Select a Basedata object by clicking on it and open the menu option *Analyses \-\> Spatial* and the spatial tab appears:
-
-![](images/ch5/image5.6.png)
-
-The Spatial tab has two main sections where you can set options. The upper section (*Parameters*) determines the parameters used in defining the two neighbour sets used in the spatial analysis (the second is optional) as well as the definition query. The lower (*Calculations to run for each neighbourhood*) determines the subsequent calculations that will be run for the set of neighbours related to each group. You can select any number of calculations to perform.
-
-###  Setting the Spatial Analysis Options
-
-The **Name** option is the name used in the system. You can accept the default, or enter a new name (you cannot have duplicate names within the same BaseData object). 
-
-The **Neighbour set 1** and **Neighbour set 2** text boxes allow you to define the neighbour sets used for the calculations (see [Spatial Conditions](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions for further details)). The size and shape of the neighbourhoods define the set of groups considered in an analysis. It is up to you to decide what sort of neighbourhoods and how many to use for your analysis. The system provides considerable flexibility in this regard: both neighbour sets may be arbitrarily defined independently of each other, and you are not obliged to specify a second neighbourhood.
-
-The default condition in the *Neighbour set* 1 text box is '*sp_self_only()*'. This restricts the neighbourhood to one cell/group (the processing group, which is the group being processed at an iteration). The default condition in the *Neighbour set 2* text box '*sp_circle (radius =\> 100000)*' defines a circular neighbourhood of 100000 units centred on the processing group. The units are whatever the original data used, and for the example data, this is a 100 km or one cell radius. Make sure to uncomment the *\#* for the function to be applied.
-
-These default conditions are appropriate for our sample data, but we will modify the second condition. Change the circle radius from *100000* to *200000*.
-
-See [Spatial Conditions](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions) for more detail on defining the neighbourhood sets (e.g. for the range of functions that you can use to specify neighbourhoods).
-
-Note that the use of neighbourhoods varies according to the type of calculation selected for analysis (see [Selecting Indices](#6.3.3-selecting-indices-to-calculate) below). Some calculations aggregate the neighbourhoods into a single set (e.g. [endemism\_whole](https://github.com/shawnlaffan/biodiverse/wiki/Indices#endemism-whole)), others compare the labels in the first neighbour set with those in the second (e.g. [Jaccard and other dissimilarity indices](http://code.google.com/p/biodiverse/wiki/Indices#Taxonomic_Dissimilarity_and_Comparison)), while others use the first set to define the list of labels to use but then consider distributions across both neighbour sets (e.g. [endemism\_central](http://code.google.com/p/biodiverse/wiki/Indices#Endemism_and_Rarity)). Some will not be run unless two neighbour sets are defined, primarily the turnover calculations.  
-
-The **Definition query** text box allows the analysis to be applied to only a subset of groups, as described in the [setting cluster analysis parameters](#5.2.1-setting-cluster-analysis-parameters)section above (those which satisfy the criteria in the definition query, but note that all groups are still considered as possible neighbours).Leave this blank for this session. For details of setting a definition query, see [Definition
-Queries](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions#definition-queries).
-
-The Verify buttons let you know if the spatial conditions entered are syntactically valid.
-
-###  Selecting indices to calculate
-
-In the calculation section, use the check boxes to select which indices you want to calculate. For the sample session, click the arrow buttons next to the *Endemism,* *Lists and Counts* and *Taxonomic Dissimilarity and Comparison* to display their subsets. Select *Endemism central* (*Endemism*)*, Redundancy* and *Richness* (*Lists and Counts*) and *Sorenson* (*Taxonomic Dissimilarity and Comparison*). Note, if the parent category is selected (e.g. Endemism), all subset indices within that set will be calculated.
-
-Details about the full range of indices are available from the [Indices](https://github.com/shawnlaffan/biodiverse/wiki/Indices) page.
-
-Click on the ***Go\!*** button. The system will then run the selected spatial analyses.
-
-![](images/ch5/image5.7.png) 
-
-###  Viewing the Spatial Analysis Results
-
-Once the analysis is complete, the system asks you whether you want to display the results. Click *Yes* and you will be shown a map of the moving window analysis results. Pull the pane down to view the options you used, for example to change them and re-run the analysis.
-
-![](images/ch5/image5.8.png)
-
-At this point, it may be useful to use the *Overlays* function (explained in section [***4.2.1***](#4.2.1-map-overlays)) to analyse results in their geographic context. Note that currently, adding an overlay can slow processing time when wanting to pan, select or hover over groups and nodes.
-
-![](images/ch5/image5.8_1.png)
-
-
-###  Running analysis with local neighbours
-
-
-In the above moving window spatial analysis, the output visualisations only provided a single cell output of iterations within the map (black dot within the group cell).
-
-However, altering the second neighbour entry to ”sp\_circle (radius \= \> 500000)” when setting the initial analysis parameters (noted above), can identify aggregated relationships of these cells with their “neighbours”.
-
-![](images/ch5/image5.11.png)
-
-The result is a display like this: 
-
-![](images/ch5/image5.12.png)
-
-Hovering over a group will highlight the groups used in the calculations, a solid circle for those in the first neighbourhood and a dash for those in the second neighbourhood. Right-click on a group to keep the highlighting at that group until the mouse is left-clicked on any group. You can control whether these are displayed or just display one set by using the ***Nbr highlighting*** option under the ***Map*** list in the left-hand toolbar.
-
-![](images/ch5/image5.12_1.png)
-
-Holding the control key while clicking on a group, or clicking on a group with the middle mouse button, produces a pop-up list with all the results in it. It also includes lists of the elements (groups) in each neighbour set (Elements set1, set2 and all) and of the labels in these neighbour sets (Labels set1, set2 and all). The “All” list is the union of neighbour sets 1 and 2\. 
-
-The tree branches are coloured according to whether they are found only in the first neighbour set (blue), the second neighbour set (red), both (black) or neither (grey). The screenshot above displays this. Also see the [blog post](https://biodiverse-analysis-software.blogspot.com/2016/01/more-on-tree-visualisations-in.html). [Some indices can also be plotted on the tree](https://biodiverse-analysis-software.blogspot.com/2017/09/visualise-spatial-analysis-results-on.html).  
 
 ##  Running a Randomisation Analysis
 
