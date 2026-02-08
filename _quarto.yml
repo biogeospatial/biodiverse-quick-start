@@ -7,7 +7,7 @@ project:
 book:
   title: "Biodiverse Quick Start Guide"
   author: "Shawn W Laffan, Giovanni Di Virgilio, Hannah Beaton, Fonti Kar, Isla Eckstein"
-  date: "2024-11-21"
+  date: "2026-02-08"
   chapters:
     - index.qmd
     - 1-overview.qmd
@@ -18,16 +18,24 @@ book:
     - 6-export.qmd
     - 7-summary.qmd
     - 8-acknowledgements.qmd
-    # - 9-references.qmd
   output-file: "Biodiverse-Quick-Start-Guide"
   downloads: [pdf]
 
 format:
   html:
     theme: zephyr
+    toc: true
+    toc-depth: 3
+    toc-expand: true
+    #toc-location: left
+    number-sections: false
+    #number-depth: 2
+    link-external-newwindow: true
   pdf:
     toc: true
-    toc-depth: 1
+    toc-depth: 3
+    number-sections: true
+    number-depth: 2
 
 # bibliography: references.bib
 editor: source
