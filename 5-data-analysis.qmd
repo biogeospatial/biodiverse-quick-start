@@ -27,7 +27,7 @@ Click **OK** to build the spatial index. A pop-up dialog notifies you that the i
 
 The Spatial Analyses are a moving window analyses (because nearly all analyses in Biodiverse are spatial in some way) and are another method of identifying spatial patterns in your data. Depending upon the exact nature of your data, it is likely that the Groups comprising your BaseData constitute a geographic surface. Moving windows are used to systematically iterate across this space, with one or two **neighbourhoods** of the moving window being used to assess the labels/values aggregated in the Groups. The window might also consist only of the processing group, with no neighbours (each group is analysed separately).
 
-To run a moving window analysis, you will need to have [imported or loaded](#open-or-import-data) a BaseData object and ideally built a [spatial index](#heading=h.3as4poj) for this BaseData. These instructions assume you have either imported the sample data above, or you can open the example BaseData object ‘*example\_data.bds*’in the Biodiverse data folder. 
+To run a moving window analysis, you will need to have [imported or loaded](3-import.html) a BaseData object and ideally built a [spatial index](#Building-a-Spatial-Index) for this BaseData. These instructions assume you have either imported the sample data above, or you can open the example BaseData object ‘*example\_data.bds*’in the Biodiverse data folder. 
 
 Select a Basedata object by clicking on it and open the menu option *Analyses \-\> Spatial* and the spatial tab appears:
 
@@ -39,18 +39,18 @@ The Spatial tab has two main sections where you can set options. The upper secti
 
 The **Name** option is the name used in the system. You can accept the default, or enter a new name (you cannot have duplicate names within the same BaseData object). 
 
-The **Neighbour set 1** and **Neighbour set 2** text boxes allow you to define the neighbour sets used for the calculations (see [Spatial Conditions](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions for further details)). The size and shape of the neighbourhoods define the set of groups considered in an analysis. It is up to you to decide what sort of neighbourhoods and how many to use for your analysis. The system provides considerable flexibility in this regard: both neighbour sets may be arbitrarily defined independently of each other, and you are not obliged to specify a second neighbourhood.
+The **Neighbour set 1** and **Neighbour set 2** text boxes allow you to define the neighbour sets used for the calculations (see the [Spatial Conditions](https://biogeospatial.github.io/biodiverse-spatial-conditions/) documentation for further details). The size and shape of the neighbourhoods define the set of groups considered in an analysis. It is up to you to decide what sort of neighbourhoods and how many to use for your analysis. The system provides considerable flexibility in this regard: both neighbour sets may be arbitrarily defined independently of each other, and you are not obliged to specify a second neighbourhood.
 
-The default condition in the *Neighbour set* 1 text box is '*sp_self_only()*'. This restricts the neighbourhood to one cell/group (the processing group, which is the group being processed at an iteration). The default condition in the *Neighbour set 2* text box '*sp_circle (radius =\> 100000)*' defines a circular neighbourhood of 100000 units centred on the processing group. The units are whatever the original data used, and for the example data, this is a 100 km or one cell radius. Make sure to uncomment the *\#* for the function to be applied.
+The default condition in the *Neighbour set* 1 text box is `sp_self_only()`. This restricts the neighbourhood to one cell/group (the processing group, which is the group being processed at an iteration). The default condition in the *Neighbour set 2* text box `sp_circle (radius =\> 100000)` defines a circular neighbourhood of `100000` units centred on the processing group. The units are whatever the original data used, and for the example data, this is a 100 km or one cell radius. Make sure to uncomment the `#` for the function to be applied.
 
-These default conditions are appropriate for our sample data, but we will modify the second condition. Change the circle radius from *100000* to *200000*.
+These default conditions are appropriate for our sample data, but we will modify the second condition. Change the circle radius from `100000` to `200000`.
 
 See [Spatial Conditions](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions) for more detail on defining the neighbourhood sets (e.g. for the range of functions that you can use to specify neighbourhoods).
 
-Note that the use of neighbourhoods varies according to the type of calculation selected for analysis (see [Selecting Indices](#6.3.3-selecting-indices-to-calculate) below). Some calculations aggregate the neighbourhoods into a single set (e.g. [endemism\_whole](https://github.com/shawnlaffan/biodiverse/wiki/Indices#endemism-whole)), others compare the labels in the first neighbour set with those in the second (e.g. [Jaccard and other dissimilarity indices](http://code.google.com/p/biodiverse/wiki/Indices#Taxonomic_Dissimilarity_and_Comparison)), while others use the first set to define the list of labels to use but then consider distributions across both neighbour sets (e.g. [endemism\_central](http://code.google.com/p/biodiverse/wiki/Indices#Endemism_and_Rarity)). Some will not be run unless two neighbour sets are defined, primarily the turnover calculations.  
+Note that the use of neighbourhoods varies according to the type of calculation selected for analysis (see [Selecting Indices](#selecting-indices-to-calculate) below). Some calculations aggregate the neighbourhoods into a single set (e.g. [endemism\_whole](https://biogeospatial.github.io/biodiverse-indices/indices.html#endemism-whole)), others compare the labels in the first neighbour set with those in the second (e.g. [Jaccard and other dissimilarity indices](https://biogeospatial.github.io/biodiverse-indices/indices.html#taxonomic-dissimilarity-and-comparison)), while others use the first set to define the list of labels to use but then consider distributions across both neighbour sets (e.g. [endemism\_central](https://biogeospatial.github.io/biodiverse-indices/indices.html#endemism-central)). Some will not be run unless two neighbour sets are defined, primarily the turnover calculations.  
 
-The **Definition query** text box allows the analysis to be applied to only a subset of groups, as described in the [setting cluster analysis parameters](#5.2.1-setting-cluster-analysis-parameters)section above (those which satisfy the criteria in the definition query, but note that all groups are still considered as possible neighbours).Leave this blank for this session. For details of setting a definition query, see [Definition
-Queries](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions#definition-queries).
+The **Definition query** text box allows the analysis to be applied to only a subset of groups, as described in the [setting cluster analysis parameters](#setting-cluster-analysis-parameters)section above (those which satisfy the criteria in the definition query, but note that all groups are still considered as possible neighbours).Leave this blank for this session. For details of setting a definition query, see [Definition
+Queries](https://biogeospatial.github.io/biodiverse-spatial-conditions/overview.html#definition-queries).
 
 The Verify buttons let you know if the spatial conditions entered are syntactically valid.
 
@@ -58,7 +58,7 @@ The Verify buttons let you know if the spatial conditions entered are syntactica
 
 In the calculation section, use the check boxes to select which indices you want to calculate. For the sample session, click the arrow buttons next to the *Endemism,* *Lists and Counts* and *Taxonomic Dissimilarity and Comparison* to display their subsets. Select *Endemism central* (*Endemism*)*, Redundancy* and *Richness* (*Lists and Counts*) and *Sorenson* (*Taxonomic Dissimilarity and Comparison*). Note, if the parent category is selected (e.g. Endemism), all subset indices within that set will be calculated.
 
-Details about the full range of indices are available from the [Indices](https://github.com/shawnlaffan/biodiverse/wiki/Indices) page.
+Details about the full range of indices are available from the [Indices](https://biogeospatial.github.io/biodiverse-indices/) documentation.
 
 Click on the ***Go\!*** button. The system will then run the selected spatial analyses.
 
@@ -70,7 +70,7 @@ Once the analysis is complete, the system asks you whether you want to display t
 
 ![](images/ch5/image5.8.png)
 
-At this point, it may be useful to use the *Overlays* function (explained in section [***4.2.1***](#4.2.1-map-overlays)) to analyse results in their geographic context. Note that currently, adding an overlay can slow processing time when wanting to pan, select or hover over groups and nodes.
+At this point, it may be useful to use the *Overlays* function (explained [here](#map-overlays)) to analyse results in their geographic context. Note that currently, adding an overlay can slow processing time when wanting to pan, select or hover over groups and nodes.
 
 ![](images/ch5/image5.8_1.png)
 
@@ -80,7 +80,7 @@ At this point, it may be useful to use the *Overlays* function (explained in sec
 
 In the above moving window spatial analysis, the output visualisations only provided a single cell output of iterations within the map (black dot within the group cell).
 
-However, altering the second neighbour entry to ”sp\_circle (radius \= \> 500000)” when setting the initial analysis parameters (noted above), can identify aggregated relationships of these cells with their “neighbours”.
+However, altering the second neighbour entry to `sp_circle (radius => 500000)` when setting the initial analysis parameters (noted above), can identify aggregated relationships of these cells with their “neighbours”.
 
 ![](images/ch5/image5.11.png)
 
@@ -102,7 +102,7 @@ Once you have imported or opened a BaseData object, you can run cluster analyses
 
 Biodiverse supports agglomerative clustering of the groups based on their labels, or some function of their labels such as the values of a linked matrix or tree.
 
-We will run a cluster analysis on the BaseData imported earlier ‘*Example\_new\_basedata’* (see [Importing data](#3.3-importing-data)). If *My\_new\_basedata* is not loaded, but you have saved it, open this file now by clicking on ‘*Open*’ from the *Basedata* menu and navigating to the location of your bds file. 
+We will run a cluster analysis on the BaseData imported earlier ‘*Example\_new\_basedata’* (see [Importing data](#importing-data)). If *My\_new\_basedata* is not loaded, but you have saved it, open this file now by clicking on ‘*Open*’ from the *Basedata* menu and navigating to the location of your bds file. 
 
 ![](images/ch5/image5.2.png)
 
@@ -120,11 +120,11 @@ The cluster analysis tab opens. It has three main sections where you can set opt
 
 ###  Setting cluster analysis parameters
 
-For this guide, accept the default name for cluster analyses (see the diagram above) and the default metric, 'SORENSON' (the set of indices available for clustering is shown in the "Grouping metric?" column in the  [Indices](https://github.com/shawnlaffan/biodiverse/wiki/Indices) list), which includes tables summarising all supported metrics and indices by Biodiverse. If the column is blank, the metric cannot be used. Also accept the default linkage, 'link_average', which calculates the dissimilarity of each new group with all others as the average of the groups merged to create it, weighted by the number of terminal nodes each contains. This means a merge between node A with 10 terminal nodes and node B with 1 terminal node will not be biased towards node B's labels. See the [Cluster parameters](https://github.com/shawnlaffan/biodiverse/wiki/SampleSession#running-a-cluster-analysis) section of the Sample Session for details of other available linkage functions.
+For this guide, accept the default name for cluster analyses (see the diagram above) and the default metric, 'SORENSON' (the set of indices available for clustering is shown in the "Grouping metric?" column in the  [Indices](https://biogeospatial.github.io/biodiverse-indices/) list), which includes tables summarising all supported metrics and indices by Biodiverse. If the column is blank, the metric cannot be used. Also accept the default linkage, 'link_average', which calculates the dissimilarity of each new group with all others as the average of the groups merged to create it, weighted by the number of terminal nodes each contains. This means a merge between node A with 10 terminal nodes and node B with 1 terminal node will not be biased towards node B's labels. See the [Cluster parameters](https://github.com/shawnlaffan/biodiverse/wiki/SampleSession#running-a-cluster-analysis) section of the Sample Session for details of other available linkage functions.
 
-The **spatial conditions** can be used to control which Groups are considered candidates to be clustered together. The default condition in the '*Spatial conditions set 1*' text box provided by the system is '*sp_select_all()*'. This condition selects every group and is an appropriate condition to use for unconstrained clustering. If you wish to use a different spatial condition, for example, to first cluster within geographic regions, then refer to [Spatial Conditions](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions for further details) 
+The **spatial conditions** can be used to control which Groups are considered candidates to be clustered together. The default condition in the '*Spatial conditions set 1*' text box provided by the system is `sp_select_all()` This condition selects every group and is an appropriate condition to use for unconstrained clustering. If you wish to use a different spatial condition, for example, to first cluster within geographic regions, then refer to the [Spatial Conditions](https://biogeospatial.github.io/biodiverse-spatial-conditions/) documentation for further details).
 
-The **definition query** serves a similar purpose, except that it can be used as a filter to restrict the clustering to only a subset of groups. For example, you might have a data set for Europe but only want to cluster cells in regions above a specified elevation value. The [Spatial Analysis](https://biogeospatial.github.io/biodiverse-quick-start/5-data-analysis.html#5.3-running-a-spatial-(moving-window)-analysis) section in this document provides additional details about spatial conditions and definition queries.
+The **definition query** serves a similar purpose, except that it can be used as a filter to restrict the clustering to only a subset of groups. For example, you might have a data set for Europe but only want to cluster cells in regions above a specified elevation value. The [Spatial Analysis](#running-a-spatial-(moving-window)-analysis) section in this document provides additional details about spatial conditions and definition queries.
 
 **Tie-breakers** deal with groups that have the same similarity score as the processing group. Tie-breakers create rules to determine which group should be merged first, using a user-selected index. If your project has a specific conservation focus, tie-breakers can bias clustering toward areas with higher richness, endemism, or other priorities.
 
@@ -166,7 +166,7 @@ To do this, select ***user-defined*** in the selection list on the bottom toolba
 ![](images/ch5/image5.4.2_5.png) 
 
 
-The cluster analysis generates a [**dissimilarity matrix**](https://github.com/shawnlaffan/biodiverse/wiki/Indices#matrix), which can be selected and viewed in the Outputs tab. In the example case, the index used is Sorenson, but a matrix can be created for different indices.
+The cluster analysis generates a **dissimilarity matrix**, which can be selected and viewed in the Outputs tab. In the example case, the index used is Sorenson, but a matrix can be created for different indices.
 
 The results consist of a map and a tree pane. The map illustrates the degree of similarity or difference between each group and its cluster neighbours. By hovering over or right-clicking a group (index group), its dissimilarity value is displayed at the top of the map pane.
 
