@@ -57,7 +57,7 @@ You will then see the Import Options window with various options you can set for
 
 ![](images/ch3/image3.5.png)
 
-Details of all the import options are described in [Import Options](https://github.com/shawnlaffan/biodiverse/wiki/SampleSession#importing-data), but leave all of them unchecked for this tutorial, except ‘*Skip lines with undef groups*’. Checking this option allows you to ignore records where a group field is either undefined or non-numeric. Such records can occur where you do not know the coordinates for a sample, if you choose the wrong column to use for the groups, or if you have a series of lines with no data at the end of a file.
+More details of the import options are in the [Import Options](https://github.com/shawnlaffan/biodiverse/wiki/SampleSession#importing-data) page, but leave all of them unchecked for this tutorial, except ‘*Skip lines with undef groups*’. Checking this option allows you to ignore records where a group field is either undefined or non-numeric. Such records can occur where you do not know the coordinates for a sample, if you choose the wrong column to use for the groups, or if you have a series of lines with no data at the end of a file.
 
 If you are not importing the *Example_site_data.csv* file, bear in mind you might need to check some of the other import options. A useful option is ‘*Allow empty groups*’ which lets you have groups that are considered for analysis, but that have no labels themselves. This is useful when you wish to have moving window analyses extend beyond the sampled data to give a smoother result.
 

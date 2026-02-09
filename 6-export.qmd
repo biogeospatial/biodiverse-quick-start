@@ -28,8 +28,8 @@ The next window will show a large range of options, with the set of options chan
 
 ![](images/ch6/image6.2.png)
 
-The most important option is the choice of **List to export**. The analysis results in Biodiverse will be stored across several lists  Most go in the SPATIAL\_RESULTS list, but list indices have their own.  Each randomisation will also have several lists on each output (see Randomisation section above).  This next example contains three calculation result lists from the [PE clade contribution calculation](https://github.com/shawnlaffan/biodiverse/wiki/Indices#pe-clade-contributions), as well as three randomisation lists for each of the result lists.  
+The most important option is the choice of **List to export**. The analysis results in Biodiverse will be stored across several lists  Most go in the SPATIAL\_RESULTS list, but list indices have their own.  Each randomisation will also have several lists on each output (see Randomisation section above).  This next example contains three calculation result lists from the [PE clade contribution calculation](https://biogeospatial.github.io/biodiverse-indices/indices.html#pe-clade-contributions), as well as three randomisation lists for each of the result lists.  
 
 ![](images/ch6/image6.3.png)
 
-The **Def query** is a [definition query](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions#definition-queries) that allows only a subset of results to be exported.  This follows the same syntax as all other definition queries.   
+The **Def query** is a [definition query](https://biogeospatial.github.io/biodiverse-spatial-conditions/overview.html#definition-queries) that allows only a subset of results to be exported.  This follows the same syntax as all other definition queries.   

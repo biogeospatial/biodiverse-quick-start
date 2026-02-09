@@ -45,7 +45,7 @@ The default condition in the *Neighbour set* 1 text box is `sp_self_only()`. Thi
 
 These default conditions are appropriate for our sample data, but we will modify the second condition. Change the circle radius from `100000` to `200000`.
 
-See [Spatial Conditions](https://github.com/shawnlaffan/biodiverse/wiki/SpatialConditions) for more detail on defining the neighbourhood sets (e.g. for the range of functions that you can use to specify neighbourhoods).
+See [Spatial Conditions](https://biogeospatial.github.io/biodiverse-spatial-conditions/) for more detail on defining the neighbourhood sets (e.g. for the range of functions that you can use to specify neighbourhoods).
 
 Note that the use of neighbourhoods varies according to the type of calculation selected for analysis (see [Selecting Indices](#selecting-indices-to-calculate) below). Some calculations aggregate the neighbourhoods into a single set (e.g. [endemism\_whole](https://biogeospatial.github.io/biodiverse-indices/indices.html#endemism-whole)), others compare the labels in the first neighbour set with those in the second (e.g. [Jaccard and other dissimilarity indices](https://biogeospatial.github.io/biodiverse-indices/indices.html#taxonomic-dissimilarity-and-comparison)), while others use the first set to define the list of labels to use but then consider distributions across both neighbour sets (e.g. [endemism\_central](https://biogeospatial.github.io/biodiverse-indices/indices.html#endemism-central)). Some will not be run unless two neighbour sets are defined, primarily the turnover calculations.  
 
