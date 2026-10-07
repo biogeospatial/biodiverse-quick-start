@@ -7,7 +7,8 @@ project:
 book:
   title: "Biodiverse Quick Start Guide"
   author: "Shawn W Laffan, Giovanni Di Virgilio, Hannah Beaton, Fonti Kar, Isla Eckstein"
-  date: "2026-02-08"
+  date: "2026-10-07"
+  date-format: iso
   chapters:
     - index.qmd
     - 1-overview.qmd
@@ -20,6 +21,7 @@ book:
     - 8-acknowledgements.qmd
   output-file: "Biodiverse-Quick-Start-Guide"
   downloads: [pdf]
+  repo-url: https://github.com/biogeospatial/biodiverse-quick-start
 
 format:
   html:
@@ -27,6 +29,7 @@ format:
     toc: true
     toc-depth: 3
     toc-expand: true
+    toc-title: "Page contents"
     #toc-location: left
     number-sections: false
     #number-depth: 2
